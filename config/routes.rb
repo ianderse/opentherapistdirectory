@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root 'home#index'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  root 'home#index'
 
   namespace :admin do
-    resources :facilities
-    get 'dashboard', to: 'dashboard#show', as: 'dashboard'
+  	get 'dashboard',   to: 'dashboard#show',    as: 'dashboard'
+
+    get 'facilities',  to: 'facilities#index',  as: 'facilities'
+    post 'facilities', to: 'facilities#import', as: 'import_facilities'
   end
 end
