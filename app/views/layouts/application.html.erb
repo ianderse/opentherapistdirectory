@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Opentherapistdirectory</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="main-header">
-		<%= render "partials/header" %>
-	</div>
+	<head>
+	  <title>Open Therapist Directory</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	  <div id="main-header">
+			<%= render "partials/header" %>
+		</div>
 
-<%= yield %>
+		<%= yield %>
 
-</body>
+	</body>
 </html>
