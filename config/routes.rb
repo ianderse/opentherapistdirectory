@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :facilities
-    get 'dashboard', to: 'dashboard#show'
+    get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   end
 end
