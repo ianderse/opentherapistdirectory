@@ -1,4 +1,6 @@
 class Facility < ActiveRecord::Base
+  has_one :facility_address
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     get 'facilities',  to: 'facilities#index',  as: 'facilities'
     post 'facilities', to: 'facilities#import', as: 'import_facilities'
   end
+
+  get 'facilities',    to: 'facilities#index',  as: 'facilities'
 end
