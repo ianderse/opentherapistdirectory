@@ -8,10 +8,11 @@
 	    </li>
 	  </ul>
 	  <section class="top-bar-section">
-	    <!-- Right Nav Section -->
 	    <ul class="right">
 	    	<% if user_signed_in? %>
-					<li><%= link_to "Signed in as #{current_user.name}. Not you? Sign out", destroy_user_session_path,:method => :delete %></li>
+					<li><%= link_to "Signed in as #{current_user.name}", edit_user_registration_path %></li>
+					<li class="divider"></li>
+					<li><%= link_to "Sign Out", destroy_user_session_path,:method => :delete %></li>
 					<li class="divider"></li>
 					<% if current_user.role == 'admin' %>
 						<li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
@@ -28,9 +29,11 @@
 	      </li>
 	      <% end %>
 	    </ul>
-	    <!-- Left Nav Section -->
 	    <ul class="left">
-	      <li><a href="#">Left Nav Button</a></li>
+	    	<li class="divider"></li>
+	      <li><a href="#">Therapist Listings</a></li>
+	      <li class="divider"></li>
+	      <li><%= link_to "Mental Health Resources", facilities_path %></li>
 	    </ul>
 	  </section>
 	</nav>

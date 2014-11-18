@@ -1,0 +1,19 @@
+.fixed {
+	margin-bottom: 45;
+}
+
+select {
+	width:100px !important;
+}
+
+.top-bar {
+	background: #433034 !important;
+}
+
+.top-bar a {
+	background: #433034 !important;
+}
+
+.top-bar a:hover {
+	background: #302628 !important;
+}

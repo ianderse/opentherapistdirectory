@@ -5,7 +5,7 @@ class Facility < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true, encoding: "iso-8859-1:UTF-8") do |row|
       facility_hash = row.to_hash
-      facility_hash.inspect
+
       facility = Facility.where(name1: facility_hash["name1"])
 
       if facility.count == 1

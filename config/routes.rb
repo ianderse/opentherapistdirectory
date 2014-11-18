@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   get 'facilities',    to: 'facilities#index',  as: 'facilities'
+  get 'contact',       to: 'home#contact',      as: 'contact'
 end
