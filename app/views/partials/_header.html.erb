@@ -1,15 +1,37 @@
 <div class='flashes'><%= flash[:notice] %></div>
 
-<% if user_signed_in? %>
-	Signed in as <%= current_user.name %>. Not you?
-	<%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-	<% else %>
-	<%= link_to "Sign up", new_user_registration_path %> or
-	<%= link_to "Sign in", new_user_session_path %>
-	<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-<% end %>
-<% if !current_user.nil? %>
-	<% if current_user.role == 'admin' %>
-		<%= link_to "Admin Dashboard", admin_dashboard_path %>
-	<% end %>
-<% end %>
+<div class="fixed">
+	<nav class="top-bar" data-topbar role="navigation">
+	  <ul class="title-area">
+	    <li class="name">
+	      <h1><a href="/">Open Therapist Directory</a></h1>
+	    </li>
+	  </ul>
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	    	<% if user_signed_in? %>
+					<li><%= link_to "Signed in as #{current_user.name}. Not you? Sign out", destroy_user_session_path,:method => :delete %></li>
+					<li class="divider"></li>
+					<% if current_user.role == 'admin' %>
+						<li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
+					<% end %>
+				<% else %>
+				<li class="divider"></li>
+	      <li class="has-dropdown not-click">
+	        <a href="#">Sign Up/Login</a>
+	        <ul class="dropdown">
+	          <li><%= link_to "Sign Up", new_user_registration_path%></li>
+	          <li><%= link_to "Sign In", new_user_session_path %></li>
+	          <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></li>
+	        </ul>
+	      </li>
+	      <% end %>
+	    </ul>
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+	      <li><a href="#">Left Nav Button</a></li>
+	    </ul>
+	  </section>
+	</nav>
+</div>

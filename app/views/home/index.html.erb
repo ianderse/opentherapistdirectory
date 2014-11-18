@@ -1,1 +1,24 @@
-Test
+<style type="text/css">
+	.dock {
+		background-image: url(assets/boat-dock.jpg);
+	}
+	.mindfulness {
+		background-image: url(assets/mindfulness.jpg);
+	}
+	.mindfulness2 {
+		background-image: url(assets/mindfulness2.jpg);
+	}
+</style>
+
+<script>
+$(function(){
+	$.stellar({
+		horizontalScrolling: false,
+		verticalOffset: 40
+	});
+});
+</script>
+
+<div class="photo dock" data-stellar-background-ratio="0.5"><span>Summer</span></div>
+<div class="photo mindfulness" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
+<div class="photo mindfulness2" data-stellar-background-ratio="0.5"><span>Winter</span></div>
