@@ -1,3 +1,53 @@
-<% @facilities.each do |facility| %>
-	<%= facility.name1 %>
-<% end %>
+<div id="facilities">
+	<input class="search" placeholder="Search" /><br/>
+	<span class="sort" data-sort="name1">Sort by name</span>
+	<ul class="filter">
+    <li class="btn" id="filter-none">Show all</li>
+    <form action="">
+			<select name="filter-state" id="filter-state">
+				<% @states.each do |state| %>
+					<option value="<%=state%>"><%=state%></option>
+				<% end %>
+			</select>
+		</form>
+  </ul>
+  <ul class="list">
+    <% @facilities.each do |facility| %>
+    	<li>
+    		<h3 class="name1"><%= facility.name1 %></h3>
+    		<p class="location_city"><%= facility.location_city %>,<p class="location_state"><%= facility.location_state %></p>
+    	</li>
+    <% end %>
+  </ul>
+  <ul class="pagination"></ul>
+</div>
+
+<script>
+  var options = {
+    valueNames: [ 'name1', 'location_state' ],
+    page: 20,
+    plugins: [
+      ListPagination({})
+    ]
+  };
+
+  var listObj = new List('facilities', options);
+
+  $('#filter-state').on('change', function() {
+  	var state = $(this).val();
+  	listObj.filter(function(obj) {
+  		return obj.values().location_state === state;
+  	});
+  });
+
+	$('#filter-none').click(function() {
+	  listObj.filter();
+	  return false;
+	});
+
+	$('#UseUsername').change(function(){
+		listObj.filter(function(obj) {
+			return $(this).is(':checked')
+		})
+	});
+</script>
