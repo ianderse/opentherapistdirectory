@@ -37,14 +37,16 @@ input:focus {
   border-color:#aaa;
 }
 .sort {
-  padding:7px;
+  width:115px;
+  height:40px;
+  padding:5px;
   border-radius: 6px;
   border:none;
   display:inline-block;
   color:#fff;
   text-decoration: none;
   background-color: #28a8e0;
-
+  text-align: center;
 }
 .sort:hover {
   text-decoration: none;

@@ -1,4 +1,3 @@
-
 <div id="facilities" style="margin-top:45px">
   <div class="row">
     <div class="large-9 push-3 columns" style="margin-top:20px">
@@ -14,19 +13,13 @@
         </form>
       </ul>
       <ul class="list" style="padding-top:0px">
-        <% @facilities.each do |facility| %>
-          <li>
-            <h3 class="name1"><%= facility.name1 %></h3>
-            <p class="location_city" style="display:inline-block"><%= facility.location_city %></p>, <p class="location_state" style="display:inline-block" ><%= facility.location_state %></p>
-          </li>
-        <% end %>
       </ul>
       <ul class="pagination"></ul>
     </div>
     <div class="large-3 pull-9 columns">
       <ul class="side-nav">
       <h1><%= image_tag "otdlogo.png"%></h1>
-        <li><input class="search" placeholder="Search" /></li>
+        <li><input class="search" placeholder="Search All Fields" /></li>
         <li><span class="sort" data-sort="name1">Sort by Name</span></li>
         <li><span class="sort" data-sort="location_city">Sort by City</span></li>
         <li><a href="#">Section 4</a></li>
@@ -36,27 +29,32 @@
     </div>
   </div>
 </div>
-
 <script>
+
+  var facilities = <%= @facilities %>
+
   var options = {
     valueNames: [ 'name1', 'location_state', 'location_city' ],
+    item: '<li><h3 class="name1"></h3><p class="location_city" style="display:inline-block"></p>, <p class="location_state" style="display:inline-block"></p><a href="http://www.google.com"><i class="fa fa-plus-circle" style="float:right"></i></a></li>',
     page: 10,
     plugins: [
       ListPagination({})
     ]
   };
 
-  var listObj = new List('facilities', options);
+  var listObj = new List('facilities', options, facilities);
 
   $('#filter-state').on('change', function() {
   	var state = $(this).val();
   	listObj.filter(function(obj) {
   		return obj.values().location_state === state;
   	});
+    // accordion_func();
   });
 
 	$('#filter-none').click(function() {
 	  listObj.filter();
+    accordion_func();
 	  return false;
 	});
 
