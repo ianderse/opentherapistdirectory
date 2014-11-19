@@ -1,33 +1,59 @@
-<br/>
-<br/>
-<div id="facilities">
-	<input class="search" placeholder="Search" /><br/>
-	<span class="sort" data-sort="name1">Sort by name</span>
-	<ul class="filter">
-    <li class="btn" id="filter-none">Show all</li>
-    <form action="">
-			<select name="filter-state" id="filter-state">
-				<% @states.each do |state| %>
-					<option value="<%=state%>"><%=state%></option>
-				<% end %>
-			</select>
-		</form>
-  </ul>
-  <ul class="list">
-    <% @facilities.each do |facility| %>
-    	<li>
-    		<h3 class="name1"><%= facility.name1 %></h3>
-    		<p class="location_city"><%= facility.location_city %>,<p class="location_state"><%= facility.location_state %></p>
-    	</li>
-    <% end %>
-  </ul>
-  <ul class="pagination"></ul>
+
+<div id="facilities" style="margin-top:45px">
+  <div class="row">
+    <div class="large-9 push-3 columns" style="margin-top:20px">
+      <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
+      <ul class="filter" style="margin-bottom:0px">
+        <li class="btn" id="filter-none">Show all</li>
+        <form action="">
+          <select name="filter-state" id="filter-state">
+            <% @states.each do |state| %>
+              <option value="<%=state%>"><%=state%></option>
+            <% end %>
+          </select>
+        </form>
+      </ul>
+      <ul class="list" style="padding-top:0px">
+        <% @facilities.each do |facility| %>
+          <li>
+            <h3 class="name1"><%= facility.name1 %></h3>
+            <p class="location_city" style="display:inline-block"><%= facility.location_city %>,</p> <p class="location_state" style="display:inline-block" ><%= facility.location_state %></p>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="pagination"></ul>
+    </div>
+    <div class="large-3 pull-9 columns">
+      <ul class="side-nav">
+      <h1><%= image_tag "otdlogo.png"%></h1>
+
+        <li><input class="search" placeholder="Search" /></li>
+        <li><span class="sort" data-sort="name1">Sort by name</span></li>
+        <li><a href="#">Section 3</a></li>
+        <li><a href="#">Section 4</a></li>
+        <li><a href="#">Section 5</a></li>
+        <li><a href="#">Section 6</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
   var options = {
     valueNames: [ 'name1', 'location_state' ],
-    page: 20,
+    page: 10,
     plugins: [
       ListPagination({})
     ]
