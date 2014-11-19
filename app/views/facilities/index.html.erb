@@ -17,7 +17,7 @@
         <% @facilities.each do |facility| %>
           <li>
             <h3 class="name1"><%= facility.name1 %></h3>
-            <p class="location_city" style="display:inline-block"><%= facility.location_city %>,</p> <p class="location_state" style="display:inline-block" ><%= facility.location_state %></p>
+            <p class="location_city" style="display:inline-block"><%= facility.location_city %></p>, <p class="location_state" style="display:inline-block" ><%= facility.location_state %></p>
           </li>
         <% end %>
       </ul>
@@ -26,10 +26,9 @@
     <div class="large-3 pull-9 columns">
       <ul class="side-nav">
       <h1><%= image_tag "otdlogo.png"%></h1>
-
         <li><input class="search" placeholder="Search" /></li>
-        <li><span class="sort" data-sort="name1">Sort by name</span></li>
-        <li><a href="#">Section 3</a></li>
+        <li><span class="sort" data-sort="name1">Sort by Name</span></li>
+        <li><span class="sort" data-sort="location_city">Sort by City</span></li>
         <li><a href="#">Section 4</a></li>
         <li><a href="#">Section 5</a></li>
         <li><a href="#">Section 6</a></li>
@@ -38,21 +37,9 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
   var options = {
-    valueNames: [ 'name1', 'location_state' ],
+    valueNames: [ 'name1', 'location_state', 'location_city' ],
     page: 10,
     plugins: [
       ListPagination({})
@@ -73,9 +60,9 @@
 	  return false;
 	});
 
-	$('#UseUsername').change(function(){
-		listObj.filter(function(obj) {
-			return $(this).is(':checked')
-		})
-	});
+	// $('#UseUsername').change(function(){
+	// 	listObj.filter(function(obj) {
+	// 		return $(this).is(':checked')
+	// 	})
+	// });
 </script>
