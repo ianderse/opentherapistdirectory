@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   get 'facilities',    to: 'facilities#index',  as: 'facilities'
+  get 'facilities/:id',to: 'facilities#show',   as: 'facility'
   get 'contact',       to: 'home#contact',      as: 'contact'
 end

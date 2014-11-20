@@ -4,8 +4,10 @@
       <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
       <ul class="filter" style="margin-bottom:0px">
         <li class="btn" id="filter-none">Show all</li>
-        <form action="">
+        <p style="display:inline-block">State:</p>
+        <form action="" style="display:inline-block">
           <select name="filter-state" id="filter-state">
+            <option value=""> </option>
             <% @states.each do |state| %>
               <option value="<%=state%>"><%=state%></option>
             <% end %>
@@ -35,7 +37,7 @@
 
   var options = {
     valueNames: [ 'name1', 'location_state', 'location_city' ],
-    item: '<li><h3 class="name1"></h3><p class="location_city" style="display:inline-block"></p>, <p class="location_state" style="display:inline-block"></p><a href="http://www.google.com"><i class="fa fa-plus-circle" style="float:right"></i></a></li>',
+    item: '<li><h3 class="name1"></h3><a href="http://www.google.com"><i class="fa fa-plus-circle" style="float:right"></i></a><p class="location_city" style="display:inline-block"></p>, <p class="location_state" style="display:inline-block"></p><br/><%= link_to "More Information", facility_path("id") %></li>',
     page: 10,
     plugins: [
       ListPagination({})
@@ -49,7 +51,6 @@
   	listObj.filter(function(obj) {
   		return obj.values().location_state === state;
   	});
-    // accordion_func();
   });
 
 	$('#filter-none').click(function() {
