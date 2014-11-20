@@ -15,6 +15,7 @@
         </form>
       </ul>
       <ul class="list" style="padding-top:0px">
+
       </ul>
       <ul class="pagination"></ul>
     </div>
@@ -34,34 +35,25 @@
 <script>
 
   var facilities = <%= @facilities %>
+  // var selected_state = $('#filter-state option:selected');
 
-  var options = {
-    valueNames: [ 'name1', 'location_state', 'location_city' ],
-    item: '<li><h3 class="name1"></h3><a href="http://www.google.com"><i class="fa fa-plus-circle" style="float:right"></i></a><p class="location_city" style="display:inline-block"></p>, <p class="location_state" style="display:inline-block"></p><br/><%= link_to "More Information", facility_path("id") %></li>',
-    page: 10,
-    plugins: [
-      ListPagination({})
-    ]
+  // function filterState(element) {
+  //   return element.location_state === selected_state;
+  // }
+
+  // facilities.filter
+
+  function render(elements) {
+
   };
 
-  var listObj = new List('facilities', options, facilities);
-
   $('#filter-state').on('change', function() {
-  	var state = $(this).val();
-  	listObj.filter(function(obj) {
-  		return obj.values().location_state === state;
-  	});
+    var state = $(this).val();
+    facilities.filter(function(obj) {
+      var filteredFacilities = obj.values().location_state === state;
+      render(filteredFacilities);
+    });
   });
 
-	$('#filter-none').click(function() {
-	  listObj.filter();
-    accordion_func();
-	  return false;
-	});
-
-	// $('#UseUsername').change(function(){
-	// 	listObj.filter(function(obj) {
-	// 		return $(this).is(':checked')
-	// 	})
-	// });
+  console.log(facilities[0]);
 </script>
