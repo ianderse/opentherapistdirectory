@@ -1,4 +1,4 @@
-<div id="facilities" style="margin-top:45px">
+<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
   <div class="row">
     <div class="large-9 push-3 columns" style="margin-top:20px">
       <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
@@ -23,37 +23,83 @@
       <ul class="side-nav">
       <h1><%= image_tag "otdlogo.png"%></h1>
         <li><input class="search" placeholder="Search All Fields" /></li>
-        <li><span class="sort" data-sort="name1">Sort by Name</span></li>
-        <li><span class="sort" data-sort="location_city">Sort by City</span></li>
-        <li><a href="#">Section 4</a></li>
+        <li><span class="name-sort">Sort by Name</span></li>
+        <li><span class="city-sort">Sort by City</span></li>
+        <li><div id="map-canvas" style="width:100%; height:100%;"></div></li>
         <li><a href="#">Section 5</a></li>
         <li><a href="#">Section 6</a></li>
       </ul>
     </div>
   </div>
 </div>
+
 <script>
+  function initialize() {
+    var mapOptions = {
+      center: { lat: -34.397, lng: 150.644},
+      zoom: 8
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
 
   var facilities = <%= @facilities %>
-  // var selected_state = $('#filter-state option:selected');
+  var firstFacilities   = _.first(facilities, 20);
+  var currentFacilities = firstFacilities;
 
-  // function filterState(element) {
-  //   return element.location_state === selected_state;
-  // }
-
-  // facilities.filter
-
-  function render(elements) {
-
+  function render(element) {
+    $('.list').append("<li><h3>" + element.name1 + "</h3><a href='#'><i class='fa fa-plus-circle add-map-pin' style='float:right'></i></a><p style='display:inline-block'>" + element.location_city + "</p><p style='display:inline-block'>, " + element.location_state + "</p><br/><a href='/facilities/" + element.id + "'>More Information</a>"+"</li>");
   };
+
+  _.each(firstFacilities, render);
+
+  $('#filter-none').on('click', function() {
+    $('.list').empty();
+    _.each(firstFacilities, render);
+  })
 
   $('#filter-state').on('change', function() {
     var state = $(this).val();
-    facilities.filter(function(obj) {
-      var filteredFacilities = obj.values().location_state === state;
-      render(filteredFacilities);
+    currentFacilities = _.filter(facilities, function(facility) {
+      return facility.location_state === state;
     });
+    $('.list').empty();
+    _.each(currentFacilities, render);
   });
 
-  console.log(facilities[0]);
+  $( ".search" ).keyup(function() {
+    var params = $(this).val().toLowerCase();
+    if (!params) {
+      $('.list').empty();
+      _.each(currentFacilities, render);
+    } else {
+      var searchedFacilities = _.filter(currentFacilities, function(facility) {
+        var searchable = (facility.location_state + facility.location_city + facility.services_text1 + facility.services_text2 + facility.services_text3 + facility.services_text4 + facility.services_text5 + facility.services_text6 + facility.services_text7).toLowerCase();
+        return ~searchable.indexOf(params);
+      });
+      $('.list').empty();
+      _.each(searchedFacilities, render);
+    }
+  });
+
+  // $('.add-map-pin').on('click', function() {
+  //   var myLatlng = new google.maps.LatLng( 51.520838, -0.140261 );
+  //   var myOptions = {
+  //       zoom: 15,
+  //       center: myLatlng,
+  //       mapTypeId: google.maps.MapTypeId.ROADMAP
+  //   }
+  //   var map = new google.maps.Map( document.getElementById( "map_canvas" ), myOptions );
+  //   var markerLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  //   var marker = new google.maps.Marker({
+  //       position: markerLatlng,
+  //       title:"Hello World!"
+  //   });
+  //   marker.setMap(map);
+  // });
+
+
+
 </script>
