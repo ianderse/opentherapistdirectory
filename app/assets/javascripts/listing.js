@@ -25,10 +25,26 @@ $( ".search" ).keyup(function() {
     _.each(currentFacilities, render);
   } else {
     var searchedFacilities = _.filter(currentFacilities, function(facility) {
-      var searchable = (facility.location_state + facility.location_city + facility.services_text1 + facility.services_text2 + facility.services_text3 + facility.services_text4 + facility.services_text5 + facility.services_text6 + facility.services_text7).toLowerCase();
+      var services = (facility.services_text1 + facility.services_text2 + facility.services_text3 + facility.services_text4 + facility.services_text5 + facility.services_text6 + facility.services_text7)
+      var searchable = (facility.name1 + facility.location_state + facility.location_city + services).toLowerCase();
       return ~searchable.indexOf(params);
     });
     $('.list').empty();
     _.each(searchedFacilities, render);
   }
 });
+
+$('.sort').on('click', function() {
+  var sort = $(this).data('sort');
+
+  var sortedList = _.sortBy(currentFacilities, function(facility) {
+    if(sort === 'name') {
+      return facility.name1.toLowerCase();
+    } else if(sort === 'city') {
+      return facility.location_city.toLowerCase();
+    }
+  })
+  $('.list').empty();
+  _.each(sortedList, render);
+});
+
