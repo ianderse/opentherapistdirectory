@@ -1,4 +1,14 @@
+<head>
+  <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyCB5IfaUUgXXtsuZNdCzF-H_MVsBLmw64M"></script>
+</head>
 <div id="facilities" style="margin-top:45px; height:100%; width:100%;">
+  <div class='ajax_flash_messages'>
+    <% flash.each do |type, message| %>
+    <div class="flash" id="<%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
+  </div>
   <div class="row">
     <div class="large-9 push-3 columns" style="margin-top:20px">
       <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
@@ -77,6 +87,15 @@
     });
   }
   // $(".pagination").quickPagination({pageSize:"3"});
+
+  $(function() {
+    $(".add-facility").on("click",function(e) {
+      e.preventDefault(); // cancel the link itself
+      $.post(this.href,function(data) {
+        // $("#someContainer").html(data);
+      });
+    });
+  });
 </script>
 
 <script src="/assets/listing.js"></script>
