@@ -34,5 +34,7 @@ gem 'unicorn'
 gem 'foundation-rails'
 gem "font-awesome-rails"
 gem 'underscore-rails'
+gem 'resque'
+
 # gem 'rack-mini-profiler'
 # gem 'actionpack-page_caching'

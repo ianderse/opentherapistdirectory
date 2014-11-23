@@ -1,15 +1,21 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root 'home#index'
+  mount Resque::Server.new, at: "/resque"
 
   namespace :admin do
-  	get 'dashboard',   to: 'dashboard#show',    as: 'dashboard'
+  	get 'dashboard',       to: 'dashboard#show',    as: 'dashboard'
 
-    get 'facilities',  to: 'facilities#index',  as: 'facilities'
-    post 'facilities', to: 'facilities#import', as: 'import_facilities'
+    get 'facilities',      to: 'facilities#index',  as: 'facilities'
+    post 'facilities',     to: 'facilities#import', as: 'import_facilities'
   end
 
-  get 'facilities',    to: 'facilities#index',  as: 'facilities'
-  get 'facilities/:id',to: 'facilities#show',   as: 'facility'
-  get 'contact',       to: 'home#contact',      as: 'contact'
+  get 'facilities',        to: 'facilities#index',  as: 'facilities'
+  get 'facilities/:id',    to: 'facilities#show',   as: 'facility'
+  get 'contact',           to: 'home#contact',      as: 'contact'
+  get 'user',              to: 'users#show',        as: 'user'
+
+  post 'facility/save/:id',to: 'facilities#save_facility', as: 'save_facility'
 end

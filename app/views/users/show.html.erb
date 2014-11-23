@@ -1,0 +1,27 @@
+<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
+  <div class="large-10 push-1 columns" style="margin-top:20px">
+    <h2 style="text-align:center"><%= @user.name %></h2><hr/>
+    <div class="large-5 columns">
+    	<div class='accordion'>
+  			<h3>My Saved Facilities</h3>
+  				<% @saved_facilities.each do |facility| %>
+  					<%= facility.name1 %>
+  				<% end %>
+  		</div>
+  	</div>
+   	<div class="large-5 columns">
+   		<div class='accordion'>
+  			<h3>My Saved Therapists</h3>
+  				<p>test</p>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<script>
+	$( ".accordion" ).accordion({
+    header: "h3",
+    collapsible: true,
+    active: false
+  });
+</script>

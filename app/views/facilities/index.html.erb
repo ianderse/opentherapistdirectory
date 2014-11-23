@@ -13,11 +13,10 @@
             <% end %>
           </select>
         </form>
+        <small style="float:right ">Click on the plus icon to add the location to the map.</small>
       </ul>
       <ul class="list" style="padding-top:0px">
-
       </ul>
-      <ul class="pagination"></ul>
     </div>
     <div class="large-3 pull-9 columns">
       <ul class="side-nav">
@@ -26,8 +25,6 @@
         <li><span class="sort" data-sort="name">Sort by Name</span></li>
         <li><span class="sort" data-sort="city">Sort by City</span></li>
         <div id="map-canvas" style="width:240px; height:240px;"></div>
-        <li><a href="#">Section 5</a></li>
-        <li><a href="#">Section 6</a></li>
       </ul>
     </div>
   </div>
@@ -79,6 +76,7 @@
       }
     });
   }
+  // $(".pagination").quickPagination({pageSize:"3"});
 </script>
 
 <script src="/assets/listing.js"></script>
