@@ -191,6 +191,7 @@ DEPENDENCIES
   active_model_serializers
   coffee-rails (~> 4.0.0)
   devise
+  execjs
   font-awesome-rails
   foundation-rails
   jbuilder (~> 2.0)

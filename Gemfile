@@ -25,7 +25,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'spring'
 end
-
+gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
