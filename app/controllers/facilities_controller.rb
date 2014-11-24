@@ -4,6 +4,7 @@ class FacilitiesController < ApplicationController
 	def index
 		@facilities = Facility.all.to_json.html_safe
 		@states     = Facility.all.pluck(:location_state).uniq.sort
+		respond_with(@facilities)
 		# @facilities = Resque.enqueue(FacilityLoadJob)
 	end
 
