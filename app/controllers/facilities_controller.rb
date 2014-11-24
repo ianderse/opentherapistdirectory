@@ -1,13 +1,15 @@
 class FacilitiesController < ApplicationController
+	respond_to :html, :json
 
 	def index
-		@facilities = Facility.limit(20).to_json.html_safe
+		@facilities = Facility.all.to_json.html_safe
 		@states     = Facility.all.pluck(:location_state).uniq.sort
 		# @facilities = Resque.enqueue(FacilityLoadJob)
 	end
 
 	def show
 		@facility = Facility.find(params[:id])
+		respond_with(@facility)
 	end
 
 	def save_facility

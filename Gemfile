@@ -35,6 +35,7 @@ gem 'foundation-rails'
 gem "font-awesome-rails"
 gem 'underscore-rails'
 gem 'resque'
+gem 'active_model_serializers'
 
 # gem 'rack-mini-profiler'
 # gem 'actionpack-page_caching'
