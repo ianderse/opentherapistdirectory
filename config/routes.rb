@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'facilities',        to: 'facilities#index',  as: 'facilities'
   get 'facilities/:id',    to: 'facilities#show',   as: 'facility'
+  post 'facility/remove/:id', to: 'users#remove_facility', as: 'remove_facility'
   get 'contact',           to: 'home#contact',      as: 'contact'
   get 'user',              to: 'users#show',        as: 'user'
 

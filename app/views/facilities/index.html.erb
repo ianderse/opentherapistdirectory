@@ -7,14 +7,13 @@
   <% end %>
   </div>
   <div class="row">
-    <div class="large-9 push-3 columns" style="margin-top:20px">
+    <div class="large-9 push-4 columns" style="margin-top:20px">
       <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
       <ul class="filter" style="margin-bottom:0px">
         <li class="btn" id="filter-none">Show all</li>
         <p style="display:inline-block">State:</p>
         <form action="" style="display:inline-block">
           <select name="filter-state" id="filter-state">
-            <option value=""> </option>
             <% @states.each do |state| %>
               <option value="<%=state%>"><%=state%></option>
             <% end %>
@@ -25,14 +24,16 @@
       <ul class="list" style="padding-top:0px">
       </ul>
     </div>
-    <div class="large-3 pull-9 columns">
+    <div class="large-3 pull-10 columns">
       <ul class="side-nav">
       <h1><%= image_tag "otdlogo.png"%></h1>
         <li><input class="search" placeholder="Search All Fields" /></li>
-        <li><span class="sort" data-sort="name">Sort by Name</span></li>
-        <li><span class="sort" data-sort="city">Sort by City</span></li>
-        <li><input type="checkbox" id="spanish-check"/> Español Habla</input></li>
-        <div id="map-canvas" style="width:240px; height:240px;"></div>
+        <li><span class="sort" data-sort="name" style="display:inline-block">Sort by Name</span></li>
+        <li><span class="sort" data-sort="city" style="display:inline-block">Sort by City</span></li>
+        <li><input type="checkbox" class="check" data-check="spanish"/> Español Habla</input></li>
+        <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
+        <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
+        <div id="map-canvas" style="width:400px; height:400px;"></div>
       </ul>
     </div>
   </div>
@@ -85,8 +86,6 @@
     });
   }
   // $(".pagination").quickPagination({pageSize:"3"});
-
-
 </script>
 
 <script src="/assets/listing.js"></script>

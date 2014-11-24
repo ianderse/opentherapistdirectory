@@ -5,4 +5,14 @@ class UsersController < ApplicationController
 			Facility.find(id)
 		end
 	end
+
+	def remove_facility
+		current_user.saved_facilities.delete(params[:id])
+		current_user.save
+		@facility_id = params[:id]
+
+		respond_to do |format|
+      format.js { @facility_id }
+    end
+	end
 end

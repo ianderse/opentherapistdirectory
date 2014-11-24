@@ -60,11 +60,13 @@ $(".add-facility").on("click",function(e) {
     $.post(this.href,function(data) {});
   });
 
-$('#spanish-check').change(function(){
+$('.check').change(function(){
+  var check = $(this).data('check');
   if ($(this).is(":checked")){
     currentFacilities = _.filter(currentFacilities, function(facility) {
       var services = (facility.services_text1 + facility.services_text2 + facility.services_text3 + facility.services_text4 + facility.services_text5 + facility.services_text6 + facility.services_text7).toLowerCase();
-      return ~services.indexOf('spanish');
+      console.log(check);
+      return ~services.indexOf(check);
     });
     $('.list').empty();
     _.each(currentFacilities, render);

@@ -6,7 +6,11 @@
   			<h3>My Saved Facilities</h3>
   				<div>
 	  				<% @saved_facilities.each do |facility| %>
-	  					<p><%= link_to facility.name1, facility_path(facility) %></p>
+	  					<p id="facility_<%= facility.id %>"><%= link_to facility.name1, facility_path(facility) %>
+	  						<%= form_tag(remove_facility_path(facility), remote: true) do %>
+                <%= submit_tag 'remove', class: "button tiny", id: "remove_facility_#{facility.id}" %>
+                <% end %>
+              </p><br/>
 	  				<% end %>
 	  			</div>
   		</div>
