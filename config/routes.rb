@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'contact',           to: 'home#contact',      as: 'contact'
   get 'user',              to: 'users#show',        as: 'user'
   get 'articles',          to: 'articles#index',    as: 'articles'
+  get 'therapists',        to: 'therapists#index',  as: 'therapists'
 
   post 'facility/save/:id',to: 'facilities#save_facility', as: 'save_facility'
 end
