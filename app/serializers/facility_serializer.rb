@@ -3,6 +3,6 @@ class FacilitySerializer < ActiveModel::Serializer
   # has_many
 
   def services
-  	(object.services_text1 + object.services_text2 + object.services_text3 + object.services_text4 + object.services_text5 + object.services_text6 + object.services_text7).gsub(/;/, ".")
+  	(object.services_text1.to_s + object.services_text2.to_s + object.services_text3.to_s + object.services_text4.to_s + object.services_text5.to_s + object.services_text6.to_s + object.services_text7.to_s).gsub(/;/, ".")
   end
 end

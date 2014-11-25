@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   root 'home#index'
   mount Resque::Server.new, at: "/resque"
 
+  namespace :api do
+    namespace :v1 do
+      get 'facilities',        to: 'facilities#index',  as: 'facilities'
+      get 'facilities/:id',    to: 'facilities#show',   as: 'facility'
+    end
+  end
+
   namespace :admin do
   	get 'dashboard',       to: 'dashboard#show',    as: 'dashboard'
 
