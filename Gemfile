@@ -22,8 +22,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
 group :development, :test do
+	gem 'capybara', '~> 2.4.3'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 	gem 'rspec-rails'
 	gem 'spring'
+	gem 'launchy'
 end
 gem 'execjs'
 gem 'therubyracer'
@@ -36,6 +40,7 @@ gem "font-awesome-rails"
 gem 'underscore-rails'
 gem 'resque'
 gem 'active_model_serializers'
+gem 'faker'
 
 # gem 'rack-mini-profiler'
 # gem 'actionpack-page_caching'
