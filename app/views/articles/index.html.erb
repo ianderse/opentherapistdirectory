@@ -7,7 +7,7 @@
   <% end %>
   </div>
   <div class="row">
-    <div class="large-9 push-4 columns" style="margin-top:20px">
+    <div class="large-10 push-2 columns" style="margin-top:20px">
       <h3>Open Therapist Directory<small> Psychology Articles</small></h3>
       <ul class="filter" style="margin-bottom:0px">
  <!--        <li class="btn" id="filter-none">Show all</li> -->
@@ -19,7 +19,7 @@
               <div>
                 <% feed[1].entries[0..9].each do |entry| %>
                   <ul>
-                  <li><%= link_to entry.title.html_safe, entry.url %></li>
+                  <li><%= link_to entry.title.html_safe, entry.url %> - <%= link_to "Share this", root_path %></li>
                 </ul>
                 <% end %>
               </div>
@@ -27,7 +27,7 @@
         </ul>
         <br/><p>Have a suggestion for a journal or RSS feed to include here? <%=link_to "Contact Us", contact_path %></p>
     </div>
-    <div class="large-3 pull-10 columns">
+    <div class="large-2 pull-10 columns">
       <ul class="side-nav">
       <h1><%= image_tag "otdlogo.png"%></h1>
 <!--         <li><input class="search" placeholder="Search All Fields" /></li>
@@ -48,7 +48,8 @@
   $( ".accordion" ).accordion({
     header: "h3",
     collapsible: true,
-    active: false
+    active: false,
+    heightStyle: 'content'
   });
 </script>
 
