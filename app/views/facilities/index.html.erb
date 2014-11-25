@@ -8,6 +8,11 @@
   </div>
   <div class="row">
     <div class="large-9 push-4 columns" style="margin-top:20px">
+        <% if !current_user %>
+          <small style="float:right">Sign in to save facilities to your profile.</small>
+        <% else %>
+          <small style="float:right"><%= link_to "My Saved Facilities", user_path %></small>
+        <% end %>
       <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
       <ul class="filter" style="margin-bottom:0px">
         <li class="btn" id="filter-none">Show all</li>
@@ -19,10 +24,10 @@
             <% end %>
           </select>
         </form>
-        <small style="float:right ">Click on the plus icon to add the location to the map.</small>
+        <small style="float:right">Click on the plus icon to add the location to the map.</small>
       </ul>
-      <ul class="list" style="padding-top:0px">
-      </ul>
+            <p class="distance"></p>
+        <ul class="list" style="padding-top:0px"></ul>
     </div>
     <div class="large-3 pull-10 columns">
       <ul class="side-nav">
@@ -33,6 +38,8 @@
         <li><input type="checkbox" class="check" data-check="spanish"/> Español Habla</input></li>
         <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
         <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
+        <li><input type="checkbox" class="check" data-check="substance"/> Substance Abuse</input></li>
+        <li><input type="checkbox" class="check" data-check="veterans"/> Veterans</input></li>
         <div id="map-canvas" style="width:400px; height:400px;"></div>
       </ul>
     </div>
@@ -43,6 +50,7 @@
   var facilities = <%= @facilities %>
   var firstFacilities   = _.first(facilities, 20);
   var currentFacilities = firstFacilities;
+  var state = $('#filter-state').val();
 
   _.each(firstFacilities, render);
 
@@ -71,6 +79,14 @@
 
   google.maps.event.addDomListener(window, 'load');
 
+  function setDistance(resultLocation) {
+    var distance = google.maps.geometry.spherical.computeDistanceBetween (initialLocation, resultLocation);
+    var toMiles = 0.000621371;
+    var distanceInMiles = Math.round(distance * toMiles);
+    $('.distance').empty();
+    $('.distance').append("Distance to facility: " + distanceInMiles + " Miles");
+  }
+
   function addMarker(address) {
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -79,14 +95,17 @@
             map: map,
             position: results[0].geometry.location
         });
+        var resultLocation = results[0].geometry.location;
+
+        setDistance(resultLocation);
+
         marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
-  // $(".pagination").quickPagination({pageSize:"3"});
 </script>
 
-<script src="/assets/listing.js"></script>
-<script src="/assets/maps.js"></script>
+<script type="text/javascript" src="/assets/listing.js"></script>
+<script type="text/javascript" src="/assets/maps.js"></script>

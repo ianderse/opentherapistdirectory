@@ -1,5 +1,3 @@
-var state = $('#filter-state').val();
-
 function render(element) {
   var location_address = element.location_street1 + " " + element.location_street2 + " " + element.location_city + " " + element.location_state + " " + element.location_zip
   location_address = location_address.replace(null, "");

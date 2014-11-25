@@ -33,9 +33,9 @@ describe 'authenticated user', type: :feature do
 
   # it 'can save a facility to a list', js: true do
 
-	  	# visit '/'
-		  # sign_in = find(:css, '.twitter-auth')
-		  # sign_in.trigger('click')
+		# visit '/'
+	  # sign_in = find(:css, '.twitter-auth')
+	  # sign_in.trigger('click')
   # 	visit '/'
   # 	click_link('Mental Health Resources')
   # 	save_and_open_screenshot

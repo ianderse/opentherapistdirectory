@@ -41,6 +41,7 @@ gem 'underscore-rails'
 gem 'resque'
 gem 'active_model_serializers'
 gem 'faker'
+gem 'feedjira'
 
 # gem 'rack-mini-profiler'
 # gem 'actionpack-page_caching'

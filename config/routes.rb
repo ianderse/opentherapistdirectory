@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'facility/remove/:id', to: 'users#remove_facility', as: 'remove_facility'
   get 'contact',           to: 'home#contact',      as: 'contact'
   get 'user',              to: 'users#show',        as: 'user'
+  get 'articles',          to: 'articles#index',    as: 'articles'
 
   post 'facility/save/:id',to: 'facilities#save_facility', as: 'save_facility'
 end

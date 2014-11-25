@@ -49,3 +49,8 @@ html, body, #map-canvas {
 	color: #468847;
 	text-align: left;
 }
+
+#accordion .ui-accordion-content {
+    max-height: 400px !important;
+    overflow-y: auto;
+}

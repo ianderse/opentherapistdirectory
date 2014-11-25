@@ -14,6 +14,9 @@ class FacilitiesController < ApplicationController
 	end
 
 	def save_facility
+		if !current_user
+			flash[:notice] = "Please Log-in to save facilities."
+		end
 		respond_to do |format|
 			if !current_user.saved_facilities.include?(params[:id])
 			 	current_user.saved_facilities << params[:id]
