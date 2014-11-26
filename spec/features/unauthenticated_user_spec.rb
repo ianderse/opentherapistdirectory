@@ -15,11 +15,6 @@ describe 'unauthenticated user', type: :feature do
   include Capybara::DSL
   OmniAuth.config.test_mode = true
 
- #  before do
-	#   request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
-	#   request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
-	# end
-
   before do
   	5.times do
       Facility.create(name1: Faker::Company.name, phone: Faker::PhoneNumber.phone_number, location_state: 'CO', location_zip: Faker::Address.zip, location_city: Faker::Address.city, location_street1: Faker::Address.street_address)
@@ -31,6 +26,17 @@ describe 'unauthenticated user', type: :feature do
     click_link 'Mental Health Resources'
     expect(current_path).to eq(facilities_path)
     expect(page).to have_content 'Mental Health Resource Finder'
+  end
+
+  it 'can create a new user' do
+    visit '/users/sign_up'
+    fill_in 'user_name', with: 'Test User'
+    fill_in 'user_email', with: 'test@example.com'
+    fill_in 'user_password', with: 'passwordpassword'
+    fill_in 'user_password_confirmation', with: 'passwordpassword'
+    click_on('Sign up')
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Signed in as Test User')
   end
 
   it "can create a new user with Twitter account" do
