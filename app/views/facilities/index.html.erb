@@ -26,7 +26,6 @@
         </form>
         <small style="float:right">Click on the plus icon to add the location to the map.</small>
       </ul>
-            <p class="distance"></p>
         <ul class="list" style="padding-top:0px"></ul>
     </div>
     <div class="large-3 pull-10 columns">
@@ -39,7 +38,9 @@
         <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
         <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
         <li><input type="checkbox" class="check" data-check="substance"/> Substance Abuse</input></li>
+        <span id="return-check"></span>
         <li><input type="checkbox" class="check" data-check="veterans"/> Veterans</input></li>
+        <p id="distance"></p>
         <div id="map-canvas" style="width:400px; height:400px;"></div>
       </ul>
     </div>
@@ -83,8 +84,8 @@
     var distance = google.maps.geometry.spherical.computeDistanceBetween (initialLocation, resultLocation);
     var toMiles = 0.000621371;
     var distanceInMiles = Math.round(distance * toMiles);
-    $('.distance').empty();
-    $('.distance').append("Distance to facility: " + distanceInMiles + " Miles");
+    $('#distance').empty();
+    $('#distance').append("Distance to facility: " + distanceInMiles + " Miles");
   }
 
   function addMarker(address) {
