@@ -29,7 +29,9 @@ $(function(){
 				Find a Mental Health Facility
 				<div class='large-12 columns'>
 					<div class="lighter">
-						<input type="text" class="search rounded" placeholder="     City or State">
+						<%= form_for :facilities, :url => url_for(:controller => 'facilities', :action => 'index'), :html => {:class => "search rounded"}, method: :get do |f| %>
+							<%= f.text_field :params, :placeholder => "State" %>
+						<% end %>
 					</div>
 				</div>
 			</div>

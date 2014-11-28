@@ -19,7 +19,7 @@
               <div>
                 <% feed[1].entries[0..9].each do |entry| %>
                   <ul>
-                  <li><%= link_to entry.title.html_safe, entry.url %> - <%= link_to "Share this", root_path %></li>
+                  <li><%= link_to entry.title.html_safe.truncate(70), entry.url %> <%= link_to "Share this", root_path, style: 'float:right' %></li>
                 </ul>
                 <% end %>
               </div>

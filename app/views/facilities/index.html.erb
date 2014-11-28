@@ -48,12 +48,15 @@
 </div>
 
 <script>
+  var initialState = <%= @initial_state %>
   var facilities = <%= @facilities %>
-  var firstFacilities   = _.first(facilities, 20);
+  var firstFacilities   = <%= @first_facilities %>
   var currentFacilities = firstFacilities;
   var state = $('#filter-state').val();
 
   _.each(firstFacilities, render);
+
+  setInitialState(initialState);
 
   var geocoder = new google.maps.Geocoder();
 

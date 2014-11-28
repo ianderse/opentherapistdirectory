@@ -1,3 +1,7 @@
+function setInitialState(value) {
+  $('#filter-state').val(value);
+}
+
 function render(element) {
   var location_address = element.location_street1 + " " + element.location_street2 + " " + element.location_city + " " + element.location_state + " " + element.location_zip
   location_address = location_address.replace(null, "");
@@ -31,7 +35,7 @@ $( ".search" ).keyup(function() {
   } else {
     var searchedFacilities = _.filter(currentFacilities, function(facility) {
       var services = (facility.services_text1 + facility.services_text2 + facility.services_text3 + facility.services_text4 + facility.services_text5 + facility.services_text6 + facility.services_text7)
-      var searchable = (facility.name1 + facility.location_state + facility.location_city + services).toLowerCase();
+      var searchable = (facility.name1 + facility.location_state + facility.location_city + facility.location_zip + services).toLowerCase();
       return ~searchable.indexOf(params);
     });
     $('.list').empty();

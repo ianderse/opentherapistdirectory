@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'facilities',        to: 'facilities#index',  as: 'facilities'
+      get 'facilities/:params',        to: 'facilities#index',  as: 'facilities'
       get 'facilities/:id',    to: 'facilities#show',   as: 'facility'
     end
   end

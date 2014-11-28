@@ -2,8 +2,14 @@ class FacilitiesController < ApplicationController
 	respond_to :html
 
 	def index
+		@state = params[:facilities][:params]
+		if @state.length > 2
+			@state = StateHelper.us_states[@state.capitalize]
+		end
+		@first_facilities = Facility.where(location_state: @state.upcase).to_json.html_safe
 		@facilities = Facility.all.to_json.html_safe
 		@states     = Facility.all.pluck(:location_state).uniq.sort
+		@initial_state = @state.upcase.to_json.html_safe
 		# @facilities = Resque.enqueue(FacilityLoadJob)
 	end
 
