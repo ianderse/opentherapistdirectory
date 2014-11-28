@@ -1,3 +1,39 @@
+#home-search {
+	width:50%;
+	height:350px;
+	margin:auto;
+	background-color:transparent;
+	border:0px;
+}
+
+#home-search-text {
+	text-align:center;
+	color:white;
+	opacity:1.0;
+}
+
+.search {
+	padding:6px 15px 6px 30px;
+	width:50%;
+	background: url('/assets/search.png') no-repeat 8px 10px;
+}
+
+.rounded {
+	border-radius:15px;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+}
+
+.lighter {
+	padding:40px 40px;
+	width:100%;
+}
+
+#home-search-field {
+	margin-left:40px;
+	width:100%;
+}
+
 .fixed {
 	margin-bottom: 45;
 }
