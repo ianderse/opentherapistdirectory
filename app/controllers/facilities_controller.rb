@@ -2,7 +2,11 @@ class FacilitiesController < ApplicationController
 	respond_to :html
 
 	def index
-		@state = params[:facilities][:params]
+		if !params[:facilities].nil?
+			@state = params[:facilities][:params]
+		else
+			@state = 'AK'
+		end
 		if @state.length > 2
 			@state = StateHelper.us_states[@state.capitalize]
 		end
