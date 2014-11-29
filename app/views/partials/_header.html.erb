@@ -41,4 +41,12 @@
 	    </ul>
 	  </section>
 	</nav>
+	<div class='ajax_flash_messages'>
+  <% flash.each do |type, message| %>
+	  <div class="flash" id="<%= type %>">
+	    <%= message %>
+	  </div>
+	<% end %>
 </div>
+</div>
+

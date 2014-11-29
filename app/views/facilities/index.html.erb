@@ -1,11 +1,4 @@
 <div id="facilities" style="margin-top:45px; height:100%; width:100%;">
-  <div class='ajax_flash_messages'>
-    <% flash.each do |type, message| %>
-    <div class="flash" id="<%= type %>">
-      <%= message %>
-    </div>
-  <% end %>
-  </div>
   <div class="row">
     <div class="large-9 push-4 columns" style="margin-top:20px">
         <% if !current_user %>

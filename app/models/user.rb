@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   serialize :saved_facilities, Array
-
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :async, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
 				 :omniauthable, :omniauth_providers => [:twitter]
 
