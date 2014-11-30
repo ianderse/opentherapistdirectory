@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'contact',           to: 'home#contact',      as: 'contact'
   get 'user',              to: 'users#show',        as: 'user'
   get 'articles',          to: 'articles#index',    as: 'articles'
+  get 'articles/share/:title',    to: 'articles#show',     as: 'articles_show'
+  post 'articles/share',   to: 'articles#share',    as: 'articles_share'
   get 'therapists',        to: 'therapists#index',  as: 'therapists'
 
   post 'facility/save/:id',to: 'facilities#save_facility', as: 'save_facility'

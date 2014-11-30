@@ -31,6 +31,9 @@ describe 'authenticated user', type: :feature do
   	expect(page).to have_content('Sign Up/Login')
   end
 
+  it 'can share an article'
+  it 'can share a therapist'
+
   # it 'can save a facility to a list', js: true do
 
 		# visit '/'

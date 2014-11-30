@@ -1,0 +1,20 @@
+<div id="articles-share" style="margin-top:90px; height:100%; width:100%;">
+	<div class="large-9 columns">
+		<div class="section-container tabs" data-section>
+    <section class="section">
+      <h5 class="title">Share Article: <%= @title %></h5>
+      <div class="content" data-slug="panel1">
+      	<%= form_tag articles_share_path, method: :post, multipart: true do %>
+				  <%= label_tag "Friend's Name" %>
+				  <%= text_field_tag :name %>
+				  <%= label_tag "Send Article To" %>
+				  <%= text_field_tag :email %>
+				  <%= hidden_field_tag 'article_title', @title %>
+				  <%= hidden_field_tag 'article_url', @link %>
+				  <%= submit_tag "Send Article" %>
+				<% end %>
+      </div>
+    </section>
+  </div>
+	</div>
+</div>
