@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'facilities/share',    to: 'facilities#share', as: 'facilities_share'
   post 'facility/remove/:id', to: 'users#remove_facility', as: 'remove_facility'
   get 'contact',           to: 'home#contact',      as: 'contact'
+  post 'contact',          to: 'home#send_contact', as: 'contact_us'
   get 'user',              to: 'users#show',        as: 'user'
   get 'articles',          to: 'articles#index',    as: 'articles'
   get 'articles/share/:title',    to: 'articles#show',     as: 'articles_show'

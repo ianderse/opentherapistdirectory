@@ -39,9 +39,7 @@ class FacilitiesController < ApplicationController
 	end
 
 	def share
-		# raise params.inspect
 		passed_params = {:facility_id => params[:facility_id], :name => params[:name], :email => params[:email]}
-		# raise passed_params.inspect
 		Resque.enqueue(ShareFacilityJob, current_user.id, passed_params)
 		redirect_to facility_path(params[:facility_id]), notice: "This Facility has been shared successfully"
 	end

@@ -1,33 +1,33 @@
 <div class="large-9 columns" style="margin-top:45px">
 
-  <h3>Get in Touch!</h3>
-  <p>I'd love to hear your feedback.</p>
+  <h3 style='text-align:center'>Get in Touch!</h3>
+  <p style='text-align:center'>Your feedback is appreciated.</p>
 
-  <div class="section-container tabs" data-section>
+  <div class="section-container tabs">
     <section class="section">
-      <h5 class="title"><a href="#panel1">Contact Me</a></h5>
+      <h5 class="title">Contact Me</h5>
       <div class="content" data-slug="panel1">
-        <form>
+        <%= form_for contact_us_path, method: :post, multipart: true do %>
           <div class="row collapse">
             <div class="large-2 columns">
-              <label class="inline">Your Name</label>
+              <%= label_tag "Your Name" %>
             </div>
             <div class="large-10 columns">
-              <input type="text" id="yourName" placeholder="Jane Smith">
+              <%= text_field_tag :name %>
             </div>
           </div>
           <div class="row collapse">
             <div class="large-2 columns">
-              <label class="inline"> Your Email</label>
+              <%= label_tag "Your Email" %>
             </div>
             <div class="large-10 columns">
-              <input type="text" id="yourEmail" placeholder="jane@smithco.com">
+              <%= text_field_tag :email %>
             </div>
           </div>
-          <label>What's up?</label>
-          <textarea rows="4"></textarea>
-          <button type="submit" class="radius button">Submit</button>
-        </form>
+          <%= label_tag "What's Up?" %>
+          <%= text_area_tag :content %>
+          <%= submit_tag "Send" %>
+        <% end %>
       </div>
     </section>
     <section class="section">
