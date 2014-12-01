@@ -78,14 +78,16 @@ Rails.application.configure do
   config.assets.precompile += %w( vendor/modernizr.js )
 
   config.action_mailer.default_url_options = { :host => 'opentherapistdirectory.com' }
-  # config.action_mailer.default_url_options = { :host => 'your.websitedomain.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.sendgrid.net",
-    :port           => "25",
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'yourdomain.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => ENV['SENDGRID_DOMAIN']
+    :enable_starttls_auto => true
   }
 end
