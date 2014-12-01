@@ -8,19 +8,15 @@ class ArticlesController < ApplicationController
 	def show
 		@title = params[:title]
 		@link  = params[:url]
-		# @share = ShareArticle.new
+
+		if !current_user
+			redirect_to articles_path, alert: "Please sign-in to share articles"
+		end
 	end
 
 	def share
-		# raise params.inspect
 		passed_params = {:title => params[:article_title], :url => params[:article_url], :name => params[:name], :email => params[:email]}
-		# raise passed_params.inspect
-		if current_user
-			Resque.enqueue(ShareArticleJob, current_user.id, passed_params)
-			# redirect_path = session[:return_to] || '/articles'
-			redirect_to articles_path, notice: "The article has been shared"
-		else
-			redirect_to articles_path, alert: "Please sign-in to share articles"
-		end
+		Resque.enqueue(ShareArticleJob, current_user.id, passed_params)
+		redirect_to articles_path, notice: "The article has been shared"
 	end
 end

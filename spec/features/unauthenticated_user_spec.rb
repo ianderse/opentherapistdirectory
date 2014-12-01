@@ -56,14 +56,11 @@ describe 'unauthenticated user', type: :feature do
   it 'cannot share an article without logging in' do
     visit '/'
     click_link('Articles')
-    # save_and_open_page
     first_accordion = first('.accordion')
     within(first_accordion) do
-      # first_share = first('.share-link')
-      # first('.share-link').click_link('Share this')
       first(:link, "Share this").click
     end
-    expect(page).to have_content("Please Log-in to share links.")
+    expect(page).to have_content("Please sign-in to share articles")
   end
 
   it 'cannot share a therapist without logging in'

@@ -6,10 +6,10 @@
   <body>
     <h1><%= @user.name %> Has Shared an Article with You from OpenTherapistDirectory.com</h1>
     <p>
-      Dear <%= @name %>, <br>
-      <%= @user.name %> Has Shared the Article: <%= link_to @title, @url %><br/>
+      <%= @name %>, <br>
+        <%= @user.name %> Has Shared the Article: <%= link_to @title, @url %><br/><br/>
 
-      Thanks!<br/>
+      Thanks!<br/><br/>
 
       <%= link_to "Open Therapist Directory", 'http://www.opentherapistdirectory.com' %>
     </p>
