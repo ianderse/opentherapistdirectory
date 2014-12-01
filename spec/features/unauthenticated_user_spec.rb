@@ -69,7 +69,7 @@ describe 'unauthenticated user', type: :feature do
   # 	sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
   # 	visit '/'
   # 	click_link 'Mental Health Resources'
-  # 	save_and_open_screenshot
+  # 	# save_and_open_screenshot
   # 	within(:css, ".list") do
   # 		# first_item = first('li')
   # 		expect(page).to have_content(sorted_facilities.first.name1)

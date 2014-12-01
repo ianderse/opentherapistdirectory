@@ -1,0 +1,19 @@
+<div id="facilities-share" style="margin-top:90px; height:100%; width:100%;">
+	<div class="large-9 columns">
+		<div class="section-container tabs" data-section>
+    <section class="section">
+      <h5 class="title">Share Facility: <%= @facility.name1 %></h5>
+      <div class="content" data-slug="panel1">
+      	<%= form_tag facilities_share_path, method: :post, multipart: true do %>
+				  <%= label_tag "Friend's Name" %>
+				  <%= text_field_tag :name %>
+				  <%= label_tag "Share Facility With" %>
+				  <%= text_field_tag :email %>
+				  <%= hidden_field_tag 'facility_id', @facility.id %>
+				  <%= submit_tag "Send" %>
+				<% end %>
+      </div>
+    </section>
+  </div>
+	</div>
+</div>

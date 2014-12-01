@@ -1,10 +1,11 @@
 <div class="facility-container">
-	  <div class="large-10 push-1 columns" style="margin-top:20px">
+	 <div class="large-10 push-1 columns" style="margin-top:20px">
 		<h2><%= @facility.name1 %></h2><hr/>
 		<p><b>Website:</b> <%= @facility.website %></p>
 		<p><b>Phone:</b> <%= @facility.phone %></p>
 		<p><b>Intake:</b> <%= @facility.intake1 %></p>
 		<p><b>Hotline:</b> <%= @facility.hotline1 %></p>
 		<p><b>Services:</b><ul> <%= @facility.services %></ul></p>
+		<p>	<%= link_to "Share this", share_facility_path(:id => @facility.id), class: 'share-link'%></p>
 	</div>
 </div>

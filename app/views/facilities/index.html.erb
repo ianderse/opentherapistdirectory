@@ -51,6 +51,8 @@
 
   setInitialState(initialState);
 
+  addFacility();
+
   var geocoder = new google.maps.Geocoder();
 
   var initialLocation = navigator.geolocation.getCurrentPosition(function (position) {

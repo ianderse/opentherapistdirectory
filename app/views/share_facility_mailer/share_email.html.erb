@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %> Has Shared a Link with You from OpenTherapistDirectory.com</h1>
+    <p>
+      <%= @name %>, <br>
+        <%= @user.name %> would like you to see: <%= link_to @facility.name1, "http://www.opentherapistdirectory.com/facilities/#{@facility.id}" %><br/><br/>
+
+      Thanks!<br/><br/>
+
+      <%= link_to "Open Therapist Directory", 'http://www.opentherapistdirectory.com' %>
+    </p>
+  </body>
+</html>

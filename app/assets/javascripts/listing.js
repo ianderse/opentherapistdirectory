@@ -1,4 +1,4 @@
-function setInitialState(value) {
+ function setInitialState(value) {
   $('#filter-state').val(value);
 }
 
@@ -6,6 +6,7 @@ function render(element) {
   var location_address = element.location_street1 + " " + element.location_street2 + " " + element.location_city + " " + element.location_state + " " + element.location_zip
   location_address = location_address.replace(null, "");
   $('.list').append("<li><h3>" + element.name1 + "</h3><a href='#return-check' onclick='addMapPin();'><i class='fa fa-plus-circle add-map-pin' style='float:right' data-street='" + location_address + "'></i></a><p>" + location_address + "<br/><a href='/facilities/" + element.id + "'>More Information</a>" + "<a class='add-facility' href='/facility/save/" + element.id + "' remote: true> Save Facility</a>" + "</li>");
+  addFacility();
 };
 
 function filterState() {
@@ -58,10 +59,12 @@ $('.sort').on('click', function() {
   _.each(sortedList, render);
 });
 
+function addFacility() {
 $(".add-facility").on("click",function(e) {
     e.preventDefault();
     $.post(this.href,function(data) {});
   });
+}
 
 $('.check').change(function(){
   var check = $(this).data('check');

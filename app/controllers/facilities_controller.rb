@@ -21,6 +21,10 @@ class FacilitiesController < ApplicationController
 		@facility = Facility.find(params[:id])
 	end
 
+	def share_facility
+		@facility = Facility.find(params[:id])
+	end
+
 	def save_facility
 		if !current_user
 			flash[:notice] = "Please Log-in to save facilities."
@@ -32,5 +36,13 @@ class FacilitiesController < ApplicationController
 			end
      	format.js{render layout: false}
    	end
+	end
+
+	def share
+		# raise params.inspect
+		passed_params = {:facility_id => params[:facility_id], :name => params[:name], :email => params[:email]}
+		# raise passed_params.inspect
+		Resque.enqueue(ShareFacilityJob, current_user.id, passed_params)
+		redirect_to facility_path(params[:facility_id]), notice: "This Facility has been shared successfully"
 	end
 end
