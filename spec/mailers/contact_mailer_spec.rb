@@ -6,11 +6,11 @@ describe ContactMailer do
     email = "test@example.com"
     name  = "Test User Two"
     title = "Test Article"
-    url   = "http://www.example.com/"
+    content = 'Feedback Feeback feeeeedback'
     let(:mail) { ContactMailer.send_feedback(user, email, name, content) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql("Feedback from Test User")
+      expect(mail.subject).to eql("Feedback from Test User Two")
     end
 
     it 'renders the receiver email' do
@@ -27,6 +27,10 @@ describe ContactMailer do
 
     it 'assigns @name' do
       expect(mail.body.encoded).to match(user.name)
+    end
+
+    it 'assigns @content' do
+      expect(mail.body.encoded).to match(content)
     end
   end
 end
