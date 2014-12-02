@@ -5,6 +5,7 @@
 		<p><b>Phone:</b> <%= @facility.phone %></p>
 		<p><b>Intake:</b> <%= @facility.intake1 %></p>
 		<p><b>Hotline:</b> <%= @facility.hotline1 %></p>
+		<p><b>Address:</b> <%= "#{@facility.location_street1} #{@facility.location_street2}, #{@facility.location_city}, #{@facility.location_state} #{@facility.location_zip}" %>
 		<p><b>Services:</b><ul> <%= @facility.services %></ul></p>
 		<p>	<%= link_to "Share this", share_facility_path(:id => @facility.id), class: 'share-link'%></p>
 	</div>
