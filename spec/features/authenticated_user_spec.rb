@@ -31,11 +31,20 @@ describe 'authenticated user', type: :feature do
   	expect(page).to have_content('Sign Up/Login')
   end
 
-  it 'can share an article'
+  it 'can share an article' do
+    visit '/'
+    click_link('Sign in with Twitter')
+    click_link('Articles')
+    first_accordion = first('.accordion')
+    within(first_accordion) do
+      first(:link, "Share this").click
+    end
+    expect(page).to have_content('Share article with')
+  end
+
   it 'can share a therapist'
 
   # it 'can save a facility to a list', js: true do
-
 		# visit '/'
 	  # sign_in = find(:css, '.twitter-auth')
 	  # sign_in.trigger('click')
