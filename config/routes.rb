@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'facilities',        to: 'facilities#index',  as: 'facilities'
       get 'facilities/:id',    to: 'facilities#show',   as: 'facility'
+      get 'therapists',        to: 'therapists#index',  as: 'therapists', defaults: {format: :json}
+      get 'therapists/:id',    to: 'therapists#show',   as: 'therapist', defaults: {format: :json}
     end
   end
 
