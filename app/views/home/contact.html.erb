@@ -7,7 +7,7 @@
     <section class="section">
       <h5 class="title">Contact Me</h5>
       <div class="content" data-slug="panel1">
-        <%= form_for contact_us_path, method: :post, multipart: true do %>
+        <%= form_for contact_us_path, method: :post, multipart: true, id: 'contact-form' do %>
           <div class="row collapse">
             <div class="large-2 columns">
               <%= label_tag "Your Name" %>
@@ -40,3 +40,17 @@
     </section>
   </div>
 </div>
+
+<script>
+//check this
+$("#contact-form").validate({
+  rules: {
+    name: "required",
+    email: {
+      required: true,
+      email: true
+    },
+  },
+});
+
+</script>

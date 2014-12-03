@@ -4,7 +4,7 @@
     <section class="section">
       <h5 class="title">Share Article: <%= @title %></h5>
       <div class="content" data-slug="panel1">
-      	<%= form_tag articles_share_path, method: :post, multipart: true do %>
+      	<%= form_tag articles_share_path, method: :post, multipart: true, id: 'share-form' do %>
 				  <%= label_tag "Friend's Name" %>
 				  <%= text_field_tag :name %>
 				  <%= label_tag "Share article with" %>
@@ -18,3 +18,16 @@
   </div>
 	</div>
 </div>
+
+<script>
+$("#share-form").validate({
+	rules: {
+		name: "required",
+		email: {
+			required: true,
+			email: true
+		},
+	},
+});
+
+</script>
