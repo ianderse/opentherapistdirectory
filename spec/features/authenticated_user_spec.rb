@@ -44,17 +44,17 @@ describe 'authenticated user', type: :feature do
 
   it 'can share a therapist'
 
-  # it 'can save a facility to a list', js: true do
+  it 'can save a facility to a list' do
 		# visit '/'
-	  # sign_in = find(:css, '.twitter-auth')
-	  # sign_in.trigger('click')
+	 #  sign_in = find(:css, '.twitter-auth')
+	 #  sign_in.trigger('click')
   # 	visit '/'
   # 	click_link('Mental Health Resources')
   # 	save_and_open_screenshot
   # 	click_link('Save Facility')
   # 	visit '/user'
   # 	expect(page).to have_content('My Saved Facilities')
-  # end
+  end
 end
 
 def setup_user(user)

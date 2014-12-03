@@ -65,21 +65,20 @@ describe 'unauthenticated user', type: :feature do
 
   it 'cannot share a therapist without logging in'
 
-  # it "can sort facilities by name" do
-  # 	sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
-  # 	visit '/'
-  # 	click_link 'Mental Health Resources'
-  #   # wait_for_ajax
-  # 	# save_and_open_screenshot
-  #   # save_and_open_page
-  # 	within(:css, ".list") do
-  # 		# first_item = first('li')
-  # 		expect(page).to have_content(sorted_facilities.first.name1)
-  # 	end
-  # end
+  it "can sort facilities by name" do
+  	# sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
+  	# visit '/'
+  	# click_link 'Mental Health Resources'
+   #  # wait_for_ajax
+  	# # save_and_open_screenshot
+   #  # save_and_open_page
+  	# within(:css, ".list") do
+  	# 	# first_item = first('li')
+  	# 	expect(page).to have_content(sorted_facilities.first.name1)
+  	# end
+  end
 
-  # it "can sort facilities by city", js: true do
-  # end
+  it "can sort facilities by city"
 end
 
 
