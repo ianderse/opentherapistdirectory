@@ -8,7 +8,7 @@ Capybara.javascript_driver = :poltergeist
 Capybara.default_wait_time = 5
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, :js_errors => false)
+  Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :js_errors => false)
 end
 
 describe 'unauthenticated user', type: :feature do
@@ -63,22 +63,56 @@ describe 'unauthenticated user', type: :feature do
     expect(page).to have_content("Please sign-in to share articles")
   end
 
-  it 'cannot share a therapist without logging in'
-
-  it "can sort facilities by name" do
-  	# sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
-  	# visit '/'
-  	# click_link 'Mental Health Resources'
-   #  # wait_for_ajax
-  	# # save_and_open_screenshot
-   #  # save_and_open_page
-  	# within(:css, ".list") do
-  	# 	# first_item = first('li')
-  	# 	expect(page).to have_content(sorted_facilities.first.name1)
-  	# end
+  it 'cannot share a facility without logging in' do
+    first_facility = Facility.first
+    visit "/facilities/#{first_facility.id}"
+    click_link("Share this")
+    expect(page).to have_content("Please sign-in to share facilities")
   end
 
-  it "can sort facilities by city"
+  it 'cannot share a therapist without logging in'
+
+  it 'can view more information on a facility', js: true do
+    visit '/'
+    click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    first('.more-information').click
+    expect(page).to have_content(Facility.first.name1)
+  end
+
+  it 'cannot view user page without loggin in' do
+    visit '/user'
+    expect(page).to have_content('Please sign in first')
+  end
+
+  it "can sort facilities by name", js: true do
+  	sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
+  	visit '/'
+    click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    first('.sort').click
+  	within(:css, ".list") do
+      first_li = first('li')
+  		within(first_li) do
+  		  expect(page).to have_content(sorted_facilities.first.name1)
+      end
+  	end
+  end
+
+  it "can sort facilities by city", js: true do
+    sorted_facilities = Facility.all.sort_by {|facility| facility.location_city}
+    visit '/'
+    click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    all('.sort').last.click
+    within(:css, ".list") do
+      first_li = first('li')
+      within(first_li) do
+        expect(page).to have_content(sorted_facilities.first.location_city)
+      end
+    end
+  end
+
 end
 
 

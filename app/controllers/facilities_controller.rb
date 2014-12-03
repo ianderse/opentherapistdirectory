@@ -22,6 +22,9 @@ class FacilitiesController < ApplicationController
 	end
 
 	def share_facility
+		if !current_user
+			redirect_to facilities_path, alert: "Please sign-in to share facilities"
+		end
 		@facility = Facility.find(params[:id])
 	end
 

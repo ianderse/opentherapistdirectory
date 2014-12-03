@@ -30,6 +30,11 @@ group :development, :test do
 	gem 'launchy'
 	gem 'pry'
 end
+
+group :test do
+	gem "codeclimate-test-reporter"
+end
+
 gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
