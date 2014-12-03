@@ -1,6 +1,5 @@
 class Facility < ActiveRecord::Base
   require 'csv'
-  has_one :facility_address
 
   def services
     ("<li>" + self.services_text1.to_s + "</li><li>" + self.services_text2.to_s + "</li><li>" + self.services_text3.to_s + "</li><li>" + self.services_text4.to_s + "</li><li>" + self.services_text5.to_s + "</li><li>" + self.services_text6.to_s + "</li><li>" + self.services_text7.to_s + "</li>").gsub(/;/, "").html_safe
