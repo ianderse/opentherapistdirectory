@@ -5,10 +5,12 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
-Capybara.default_wait_time = 5
+# Capybara.javascript_driver = :poltergeist_debug
+
+Capybara.default_wait_time = 10
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, :js_errors => false)
+  Capybara::Poltergeist::Driver.new(app, :inspector => true, :window_size => [1920, 1080], :js_errors => false)
 end
 
 describe 'authenticated user', type: :feature do
@@ -44,16 +46,27 @@ describe 'authenticated user', type: :feature do
 
   it 'can share a therapist'
 
-  it 'can save a facility to a list' do
-		# visit '/'
-	 #  sign_in = find(:css, '.twitter-auth')
-	 #  sign_in.trigger('click')
-  # 	visit '/'
-  # 	click_link('Mental Health Resources')
-  # 	save_and_open_screenshot
-  # 	click_link('Save Facility')
-  # 	visit '/user'
-  # 	expect(page).to have_content('My Saved Facilities')
+  it 'can save a facility to a list', js: true do
+		visit '/'
+    click_link('Sign Up/Login')
+    click_link('Sign in with Twitter')
+  	visit '/'
+  	click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    first('.add-facility').click
+  	visit '/user'
+  	expect(page).to have_content('My Saved Facilities')
+  end
+
+  it 'can view more information on a facility', js: true do
+    visit '/'
+    click_link('Sign Up/Login')
+    click_link('Sign in with Twitter')
+    visit '/'
+    click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    first('.more-information').click
+    expect(page).to have_content(Facility.first.name1)
   end
 end
 

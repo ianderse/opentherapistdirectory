@@ -28,6 +28,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'spring'
 	gem 'launchy'
+	gem 'pry'
 end
 gem 'execjs'
 gem 'therubyracer'
