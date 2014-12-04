@@ -10,9 +10,10 @@ class FacilitiesController < ApplicationController
 		if @state.length > 2
 			@state = StateHelper.us_states[@state.capitalize]
 		end
-		@first_facilities = Facility.where(location_state: @state.upcase).to_json.html_safe
-		@facilities = Facility.all.to_json.html_safe
-		@states     = Facility.all.pluck(:location_state).uniq.sort
+    all_facilities = Facility.all
+		@first_facilities = all_facilities.find_all{|facility| facility.location_state == @state.upcase}.to_json.html_safe
+		@facilities = all_facilities.to_json.html_safe
+		@states     = all_facilities.pluck(:location_state).uniq.sort
 		@initial_state = @state.upcase.to_json.html_safe
 	end
 
