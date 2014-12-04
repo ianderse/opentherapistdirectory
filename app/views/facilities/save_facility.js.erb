@@ -1,1 +1,5 @@
-$('.ajax_flash_messages').html("<div class='flash' id='notice'>Facility Saved to Your List</div>");
+<% if !current_user.nil? %>
+  $('.ajax_flash_messages').html("<div class='flash' id='notice'>Facility Saved to Your List</div>");
+<% else %>
+  $('.ajax_flash_messages').html("<div class='flash' id='alert'>Please Sign In to Save Facilities</div>");
+<% end %>

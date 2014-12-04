@@ -14,7 +14,6 @@ class FacilitiesController < ApplicationController
 		@facilities = Facility.all.to_json.html_safe
 		@states     = Facility.all.pluck(:location_state).uniq.sort
 		@initial_state = @state.upcase.to_json.html_safe
-		# @facilities = Resque.enqueue(FacilityLoadJob)
 	end
 
 	def show
@@ -29,10 +28,11 @@ class FacilitiesController < ApplicationController
 	end
 
 	def save_facility
-		if !current_user
-			flash[:notice] = "Please Log-in to save facilities."
-		end
+
 		respond_to do |format|
+      if !current_user
+        format.js{render layout: false}
+      end
 			if !current_user.saved_facilities.include?(params[:id])
 			 	current_user.saved_facilities << params[:id]
 			 	current_user.save!
