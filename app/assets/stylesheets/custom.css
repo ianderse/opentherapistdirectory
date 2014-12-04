@@ -1,3 +1,7 @@
+.ajax_flash_messages {
+  position: fixed;
+  width: 100%;
+}
 .sort {
 	width: 130px;
 	background: #FFF;

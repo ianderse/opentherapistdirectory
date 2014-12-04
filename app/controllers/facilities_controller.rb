@@ -28,17 +28,15 @@ class FacilitiesController < ApplicationController
 	end
 
 	def save_facility
-
-		respond_to do |format|
-      if !current_user
-        format.js{render layout: false}
-      end
-			if !current_user.saved_facilities.include?(params[:id])
-			 	current_user.saved_facilities << params[:id]
-			 	current_user.save!
-			end
-     	format.js{render layout: false}
-   	end
+		if current_user
+  		respond_to do |format|
+  			if !current_user.saved_facilities.include?(params[:id])
+  			 	current_user.saved_facilities << params[:id]
+  			 	current_user.save!
+  			end
+       	format.js{render layout: false}
+     	end
+    end
 	end
 
 	def share
