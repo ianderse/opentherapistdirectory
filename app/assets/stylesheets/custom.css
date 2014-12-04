@@ -1,6 +1,7 @@
 .ajax_flash_messages {
   position: fixed;
   width: 100%;
+  margin-left:5px;
 }
 .sort {
 	width: 130px;
