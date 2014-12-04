@@ -1,8 +1,7 @@
 class ContactJob
   @queue = :mailer
 
-  def self.perform(user_id, params)
-  	@user  = User.find(user_id)
+  def self.perform(params)
   	@name = params['name']
   	@email = params['email']
   	@content = params['content']
