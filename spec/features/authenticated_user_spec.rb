@@ -48,12 +48,26 @@ describe 'authenticated user', type: :feature do
 		visit '/'
     click_link('Sign Up/Login')
     click_link('Sign in with Twitter')
-  	visit '/'
   	click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.add-facility').click
   	visit '/user'
   	expect(page).to have_content('My Saved Facilities')
+  end
+
+  it 'can delete a facility from users saved list', js: true do
+    visit '/'
+    click_link('Sign Up/Login')
+    click_link('Sign in with Twitter')
+    click_link('Mental Health Resources')
+    select('CO', :from => 'filter-state')
+    first('.add-facility').click
+    visit '/user'
+    page.execute_script("$('#remove_facility_#{Facility.first.id}').show()")
+    # click_link('My Saved Facilities')
+    # # puts current_url
+    # # require 'pry'; binding.pry
+    # click_on("#remove_facility_#{Facility.first.id}")
   end
 
   it 'can view more information on a facility', js: true do
