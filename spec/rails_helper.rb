@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'database_cleaner'
+require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -26,6 +27,8 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   # config.include(MyHelpers)
+  config.include Devise::TestHelpers, type: :controller
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     # load "#{Rails.root}/db/seeds.rb"
