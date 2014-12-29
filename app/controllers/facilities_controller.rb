@@ -8,12 +8,12 @@ class FacilitiesController < ApplicationController
 			@state = 'AK'
 		end
 		if @state.length > 2
-			@state = StateHelper.us_states[@state.capitalize]
+			@state ||= StateHelper.us_states[@state.capitalize]
 		end
     all_facilities = Facility.all
 		@first_facilities = all_facilities.find_all{|facility| facility.location_state == @state.upcase}.to_json.html_safe
-		@facilities = all_facilities.to_json.html_safe
-		@states     = all_facilities.pluck(:location_state).uniq.sort
+		@facilities ||= all_facilities.to_json.html_safe
+		@states     ||= all_facilities.pluck(:location_state).uniq.sort
 		@initial_state = @state.upcase.to_json.html_safe
 	end
 
