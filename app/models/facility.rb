@@ -5,6 +5,10 @@ class Facility < ActiveRecord::Base
     ("<li>" + self.services_text1.to_s + "</li><li>" + self.services_text2.to_s + "</li><li>" + self.services_text3.to_s + "</li><li>" + self.services_text4.to_s + "</li><li>" + self.services_text5.to_s + "</li><li>" + self.services_text6.to_s + "</li><li>" + self.services_text7.to_s + "</li>").gsub(/;/, "").html_safe
   end
 
+  def json_services
+    (self.services_text1.to_s + self.services_text2.to_s + self.services_text3.to_s + self.services_text4.to_s + self.services_text5.to_s + self.services_text6.to_s + self.services_text7.to_s)
+  end
+
   def self.import(file)
     CSV.foreach(file.path, headers: true, encoding: "iso-8859-1:UTF-8") do |row|
       facility_hash = row.to_hash

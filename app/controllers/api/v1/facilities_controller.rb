@@ -22,13 +22,11 @@ class Api::V1::FacilitiesController < API::V1::BaseController
         'intake' => facility.intake1,
         'hotline' => facility.hotline1,
         'address' => "#{facility.location_street1} #{facility.location_street2}, #{facility.location_city}, #{facility.location_state} #{facility.location_zip}",
-        'services' => services(facility),
+        'services' => facility.json_services,
       }
     end
   end
 
-  def services(facility)
-    (facility.services_text1.to_s + facility.services_text2.to_s + facility.services_text3.to_s + facility.services_text4.to_s + facility.services_text5.to_s + facility.services_text6.to_s + facility.services_text7.to_s)
-  end
+
 
 end
