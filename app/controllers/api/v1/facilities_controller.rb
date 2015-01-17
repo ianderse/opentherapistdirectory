@@ -16,6 +16,7 @@ class Api::V1::FacilitiesController < API::V1::BaseController
   def all_formatted
     Facility.all.map do |facility|
       {
+        'id' => facility.id,
         'name' => facility.name1,
         'website' => facility.website,
         'phone' => facility.phone,
