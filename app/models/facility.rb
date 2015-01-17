@@ -18,4 +18,5 @@ class Facility < ActiveRecord::Base
       end
     end
   end
+
 end
