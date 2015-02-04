@@ -1,6 +1,6 @@
 class TherapistsController < ApplicationController
 	def index
-    @states     ||= Therapist.all.pluck(:state).uniq.sort
+    @states     ||= Therapist.includes(:location).pluck(:state).uniq.sort
     @therapists = Therapist.all
 	end
 

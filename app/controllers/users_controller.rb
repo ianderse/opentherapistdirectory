@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	def show
 		if current_user
-			@user = User.find(current_user)
+			@user = User.find(current_user.id)
 			@saved_facilities = @user.saved_facilities.map do |id|
 				Facility.find(id)
 			end
