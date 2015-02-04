@@ -1,9 +1,49 @@
-<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
+<div id="therapists" style="margin-top:45px; height:100%; width:100%;">
   <div class="row">
     <div class="large-9 push-4 columns" style="margin-top:20px">
       <% @therapists.each do |therapist| %>
-        <%= therapist.name %>
+        <%= link_to therapist.full_name, therapist_path(therapist) %>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
+  <div class="row">
+    <div class="large-9 push-4 columns" style="margin-top:20px">
+        <% if !current_user %>
+          <small style="float:right">Sign in to save facilities to your profile.</small>
+        <% else %>
+          <small style="float:right"><%= link_to "My Saved Facilities", user_path %></small>
+        <% end %>
+      <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
+      <ul class="filter" style="margin-bottom:0px">
+        <p style="display:inline-block">State:</p>
+        <form action="" style="display:inline-block">
+          <select name="filter-state" id="filter-state">
+            <% @states.each do |state| %>
+              <option value="<%=state%>"><%=state%></option>
+            <% end %>
+          </select>
+        </form>
+        <small style="float:right">Click on the plus icon to add the location to the map.</small>
+      </ul>
+        <ul class="list" style="padding-top:0px"></ul>
+    </div>
+    <div class="large-3 pull-10 columns">
+      <ul class="side-nav">
+      <h1><%= image_tag "otdlogo.png"%></h1><hr>
+        <li><input class="search" placeholder="Search All Fields" style="width:100%" /></li><hr>
+        <li><span class="sort" data-sort="name" style="display:inline-block">Sort by Name</span></li>
+        <li><span class="sort" data-sort="city" style="display:inline-block">Sort by City</span></li><hr>
+        <li><input type="checkbox" class="check" data-check="spanish"/> Español Habla</input></li>
+        <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
+        <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
+        <li><input type="checkbox" class="check" data-check="substance"/> Substance Abuse</input></li>
+        <li><input type="checkbox" class="check" data-check="lgbt"/> LGBT Services</input></li>
+        <span id="return-check"></span>
+        <li><input type="checkbox" class="check" data-check="veterans"/> Veteran Services</input></li><hr>
+      </ul>
     </div>
   </div>
 </div>

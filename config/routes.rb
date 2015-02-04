@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   post 'articles/share',        to: 'articles#share',            as: 'articles_share'
 
   get  'therapists',            to: 'therapists#index',          as: 'therapists'
+  get  'therapists/:id',        to: 'therapists#show',           as: 'therapist'
 end

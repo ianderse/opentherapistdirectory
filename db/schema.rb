@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204191229) do
+ActiveRecord::Schema.define(version: 20150204193059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20150204191229) do
     t.string   "location_zip4"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.integer "therapist_id"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zipcode"
+    t.string  "street_1"
+    t.string  "street_2"
   end
 
   create_table "therapists", force: true do |t|

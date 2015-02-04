@@ -69,14 +69,26 @@ describe 'authenticated user', type: :feature do
 
   describe 'therapist view' do
     it 'can view a listing of all therapists' do
+      create_therapist
       sign_in
       click_link('Find a Therapist')
-      expect(page).to have_content(Therapist.first.name)
+      expect(page).to have_content(Therapist.first.full_name)
+    end
+
+    it 'can view more information on a therapist' do
+      create_therapist
+      sign_in
+      click_link('Find a Therapist')
+      click_link(Therapist.first.full_name)
     end
 
     it 'can share a therapist'
 
   end
+end
+
+def create_therapist
+  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
 end
 
 def sign_in
