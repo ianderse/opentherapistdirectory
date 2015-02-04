@@ -24,16 +24,14 @@ describe 'authenticated user', type: :feature do
   end
 
   it 'can sign out' do
-  	visit '/'
-  	click_link('Sign in with Twitter')
+  	sign_in
   	visit '/'
   	click_link('Sign Out')
   	expect(page).to have_content('Sign Up/Login')
   end
 
   it 'can share an article' do
-    visit '/'
-    click_link('Sign in with Twitter')
+    sign_in
     click_link('Articles')
     first_accordion = first('.accordion')
     within(first_accordion) do
@@ -71,13 +69,18 @@ describe 'authenticated user', type: :feature do
 
   describe 'therapist view' do
     it 'can view a listing of all therapists' do
-      skip
+      sign_in
       visit '/therapists'
     end
 
     it 'can share a therapist'
 
   end
+end
+
+def sign_in
+  visit '/'
+  click_link('Sign in with Twitter')
 end
 
 def sign_in_js

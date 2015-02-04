@@ -463,9 +463,9 @@
         1,
         null,
         1,
-        6,
-        6,
-        6,
+        7,
+        7,
+        7,
         null,
         0,
         0,
@@ -825,11 +825,11 @@
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/omniauth_callbacks_controller.rb": [
         1,
         1,
-        6,
-        6,
-        6,
-        6,
-        6,
+        7,
+        7,
+        7,
+        7,
+        7,
         null,
         0,
         0,
@@ -936,6 +936,13 @@
         null,
         null
       ],
+      "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/therapists_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/registrations_controller.rb": [
         1,
         1,
@@ -948,6 +955,6 @@
         null
       ]
     },
-    "timestamp": 1423076021
+    "timestamp": 1423076134
   }
 }
