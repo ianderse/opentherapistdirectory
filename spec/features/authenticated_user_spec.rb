@@ -42,12 +42,8 @@ describe 'authenticated user', type: :feature do
     expect(page).to have_content('Share article with')
   end
 
-  it 'can share a therapist'
-
   it 'can save a facility to a list', js: true do
-		visit '/'
-    click_link('Sign Up/Login')
-    click_link('Sign in with Twitter')
+		sign_in_js
   	click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.add-facility').click
@@ -56,30 +52,38 @@ describe 'authenticated user', type: :feature do
   end
 
   it 'can delete a facility from users saved list', js: true do
-    visit '/'
-    click_link('Sign Up/Login')
-    click_link('Sign in with Twitter')
+    sign_in_js
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.add-facility').click
     visit '/user'
     page.execute_script("$('#remove_facility_#{Facility.first.id}').show()")
-    # click_link('My Saved Facilities')
-    # # puts current_url
-    # # require 'pry'; binding.pry
-    # click_on("#remove_facility_#{Facility.first.id}")
   end
 
   it 'can view more information on a facility', js: true do
-    visit '/'
-    click_link('Sign Up/Login')
-    click_link('Sign in with Twitter')
+    sign_in_js
     visit '/'
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.more-information').click
     expect(page).to have_content(Facility.first.name1)
   end
+
+  describe 'therapist view' do
+    it 'can view a listing of all therapists' do
+      skip
+      visit '/therapists'
+    end
+
+    it 'can share a therapist'
+
+  end
+end
+
+def sign_in_js
+  visit '/'
+  click_link('Sign Up/Login')
+  click_link('Sign in with Twitter')
 end
 
 def setup_user(user)

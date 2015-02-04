@@ -11,7 +11,7 @@ RSpec.describe Api::V1::FacilitiesController, :type => :controller do
       get :index, format: :json
       expect(response).to be_success
       json = JSON.parse(response.body)
-      expect(json['facilities'].length).to eq(5)
+      expect(json['facility'].length).to eq(5)
     end
 
     # it 'renders a specific facility as JSON' do
