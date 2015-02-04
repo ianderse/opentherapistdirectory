@@ -1,5 +1,5 @@
 class TherapistsController < ApplicationController
 	def index
-		# render 'test/index.html.erb'
+    @therapists = Therapist.all
 	end
 end

@@ -443,9 +443,12 @@
         1,
         1,
         1,
+        null,
         1,
         1,
+        null,
         1,
+        null,
         1,
         1,
         1,
@@ -705,7 +708,6 @@
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/models/therapist.rb": [
         1,
         1,
-        null,
         null
       ],
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/api/v1/facilities_controller.rb": [
@@ -896,8 +898,8 @@
         10,
         10,
         10,
-        8,
-        8,
+        7,
+        7,
         null,
         20,
         null,
@@ -939,7 +941,7 @@
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/therapists_controller.rb": [
         1,
         1,
-        null,
+        1,
         null,
         null
       ],
@@ -955,6 +957,6 @@
         null
       ]
     },
-    "timestamp": 1423076134
+    "timestamp": 1423076637
   }
 }

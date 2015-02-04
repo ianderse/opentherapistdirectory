@@ -70,7 +70,8 @@ describe 'authenticated user', type: :feature do
   describe 'therapist view' do
     it 'can view a listing of all therapists' do
       sign_in
-      visit '/therapists'
+      click_link('Find a Therapist')
+      expect(page).to have_content(Therapist.first.name)
     end
 
     it 'can share a therapist'
