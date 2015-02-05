@@ -459,7 +459,7 @@
         1,
         1,
         1,
-        null,
+        1,
         null
       ],
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/models/user.rb": [
@@ -711,6 +711,8 @@
       "/Users/ianderse/Dropbox/Projects/Turing/Section_3/opentherapistdirectory/app/controllers/therapists_controller.rb": [
         1,
         1,
+        null,
+        1,
         0,
         0,
         null,
@@ -720,6 +722,17 @@
         null,
         null,
         1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
         null,
         null,
         null
@@ -750,6 +763,6 @@
         null
       ]
     },
-    "timestamp": 1423157444
+    "timestamp": 1423159821
   }
 }

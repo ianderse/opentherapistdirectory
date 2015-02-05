@@ -85,7 +85,6 @@ describe 'authenticated user', type: :feature do
     it 'can share a therapist'
 
     it 'can sign up to list as a therapist' do
-      skip
       sign_in
       click_link('List Your Practice')
       expect(page).to have_content("List Your Psychotherapy Practice")

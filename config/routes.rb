@@ -40,5 +40,5 @@ Rails.application.routes.draw do
   get  'therapists',            to: 'therapists#index',          as: 'therapists'
   get  'therapists/new',        to: 'therapists#new',            as: 'new_therapist'
   get  'therapists/:id',        to: 'therapists#show',           as: 'therapist'
-
+  get  'therapists/:id/edit',   to: 'therapists#edit',           as: 'edit_therapist'
 end
