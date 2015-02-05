@@ -3,7 +3,7 @@ class TherapistsController < ApplicationController
 
 	def index
     @states     ||= Therapist.includes(:location).pluck(:state).uniq.sort
-    @therapists = Therapist.all
+    @therapists = Therapist.where(verified: true)
 	end
 
   def show

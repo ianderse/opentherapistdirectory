@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204193059) do
+ActiveRecord::Schema.define(version: 20150205175428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "facilities", force: true do |t|
-    t.string   "name1"
-    t.string   "name2"
-    t.string   "website"
-    t.string   "phone"
-    t.string   "intake1"
-    t.string   "intake2"
-    t.string   "hotline1"
-    t.string   "hotline2"
-    t.string   "service_codes"
+  create_table "facilities", force: :cascade do |t|
+    t.string   "name1",            limit: 255
+    t.string   "name2",            limit: 255
+    t.string   "website",          limit: 255
+    t.string   "phone",            limit: 255
+    t.string   "intake1",          limit: 255
+    t.string   "intake2",          limit: 255
+    t.string   "hotline1",         limit: 255
+    t.string   "hotline2",         limit: 255
+    t.string   "service_codes",    limit: 255
     t.text     "services_text1"
     t.text     "services_text2"
     t.text     "services_text3"
@@ -33,57 +33,58 @@ ActiveRecord::Schema.define(version: 20150204193059) do
     t.text     "services_text5"
     t.text     "services_text6"
     t.text     "services_text7"
-    t.string   "mail_street1"
-    t.string   "mail_street2"
-    t.string   "mail_city"
-    t.string   "mail_state"
-    t.string   "mail_zip"
-    t.string   "mail_zip4"
-    t.string   "location_street1"
-    t.string   "location_street2"
-    t.string   "location_city"
-    t.string   "location_state"
-    t.string   "location_zip"
-    t.string   "location_zip4"
+    t.string   "mail_street1",     limit: 255
+    t.string   "mail_street2",     limit: 255
+    t.string   "mail_city",        limit: 255
+    t.string   "mail_state",       limit: 255
+    t.string   "mail_zip",         limit: 255
+    t.string   "mail_zip4",        limit: 255
+    t.string   "location_street1", limit: 255
+    t.string   "location_street2", limit: 255
+    t.string   "location_city",    limit: 255
+    t.string   "location_state",   limit: 255
+    t.string   "location_zip",     limit: 255
+    t.string   "location_zip4",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.integer "therapist_id"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zipcode"
-    t.string  "street_1"
-    t.string  "street_2"
+    t.string  "city",         limit: 255
+    t.string  "state",        limit: 255
+    t.string  "zipcode",      limit: 255
+    t.string  "street_1",     limit: 255
+    t.string  "street_2",     limit: 255
   end
 
-  create_table "therapists", force: true do |t|
+  create_table "therapists", force: :cascade do |t|
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",  limit: 255
+    t.string   "last_name",   limit: 255
+    t.boolean  "verified"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "role"
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "role",                   limit: 255
     t.text     "saved_facilities"
   end
 

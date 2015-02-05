@@ -91,7 +91,7 @@ describe 'authenticated user', type: :feature do
       expect(page).to have_content("List Your Psychotherapy Practice")
     end
 
-    it 'must have an admin approve a therapist listing'
+    it 'must have an admin approve a therapist listing before listing shows up'
 
   end
 end
