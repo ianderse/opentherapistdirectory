@@ -70,6 +70,12 @@ describe 'unauthenticated user', type: :feature do
     expect(page).to have_content("Please sign-in to share facilities")
   end
 
+  it 'cannot sign up to list a practice without logging in' do
+    visit '/'
+    click_link('List Your Practice')
+    expect(page).to have_content("Please sign-in to list your practice")
+  end
+
   it 'cannot share a therapist without logging in'
 
   it 'can view more information on a facility', js: true do
