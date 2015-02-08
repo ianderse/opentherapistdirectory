@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20150205180004) do
     t.datetime "updated_at"
     t.string   "first_name",     limit: 255
     t.string   "last_name",      limit: 255
-    t.boolean  "verified"
+    t.boolean  "verified",                   default: false
     t.string   "email"
     t.string   "certifications"
     t.boolean  "sliding_scale"
