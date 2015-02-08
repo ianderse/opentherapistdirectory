@@ -188,3 +188,8 @@ html, body, #map-canvas {
 	margin:auto;
 	width:500px;
 }
+
+#new-therapist {
+  margin-top:50px;
+  text-align: center;
+}

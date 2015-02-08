@@ -11,7 +11,7 @@ class TherapistsController < ApplicationController
   end
 
   def new
-
+    @therapist = Therapist.new
   end
 
   def edit

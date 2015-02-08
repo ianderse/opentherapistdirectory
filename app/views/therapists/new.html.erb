@@ -1,0 +1,25 @@
+<h2 id='new-therapist'>List Your Practice</h2>
+
+<div class="row">
+  <div class="large-4 large-centered columns">
+    <div id="user-welcome">
+      <%= form_for @therapist do |f| %>
+        <%= f.label 'First Name' %>
+        <%= f.text_field :first_name %>
+        <%= f.label 'Last Name' %>
+        <%= f.text_field :last_name %>
+        <%= f.label 'Email' %>
+        <%= f.text_field :email %>
+        <%= f.label 'Certifications' %>
+        <%= f.text_field :certifications %>
+        <%= f.label 'Sliding Scale?', :style => 'display: inline-block' %>
+        <%= f.check_box :sliding_scale %><br/>
+        <%= f.label 'Average Session Cost' %>
+        <%= f.text_field :cost %>
+        <%= f.submit value: 'List Practice', class: "custom-button button round"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

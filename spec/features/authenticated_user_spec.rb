@@ -87,7 +87,7 @@ describe 'authenticated user', type: :feature do
     it 'can sign up to list as a therapist' do
       sign_in
       click_link('List Your Practice')
-      expect(page).to have_content("List Your Psychotherapy Practice")
+      expect(page).to have_content("List Your Practice")
     end
 
     it 'must have an admin approve a therapist listing before listing shows up'
