@@ -19,9 +19,14 @@ class TherapistsController < ApplicationController
   end
 
   def create
-    Therapist.create(therapist_params)
-    flash[:notice] = "Thank you for Submitting your Practice"
-    redirect_to root_path
+    @therapist = Therapist.new(therapist_params)
+    if @therapist.save
+      flash[:notice] = "Thank you for Submitting your Practice"
+      redirect_to root_path
+    else
+      flash[:errors] = @therapist.errors.full_messages
+      render 'new'
+    end
   end
 
   private
