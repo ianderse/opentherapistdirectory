@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   get  'therapists/new',        to: 'therapists#new',            as: 'new_therapist'
   get  'therapists/:id',        to: 'therapists#show',           as: 'therapist'
   get  'therapists/:id/edit',   to: 'therapists#edit',           as: 'edit_therapist'
+  post 'therapists',            to: 'therapists#create'
 end

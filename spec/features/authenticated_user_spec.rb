@@ -88,15 +88,24 @@ describe 'authenticated user', type: :feature do
       sign_in
       click_link('List Your Practice')
       expect(page).to have_content("List Your Practice")
+      fill_in 'therapist_first_name', :with => 'Test'
+      fill_in 'therapist_last_name', :with => 'Therapist'
+      fill_in 'therapist_email',     :with => 'test@example.com'
+      fill_in 'therapist_certifications', :with => 'MA, LPC'
+      fill_in 'therapist_cost', :with => '$50 - $100'
+      click_on('List Practice')
+      expect(page).to have_content('Thank you for Submitting your Practice')
     end
 
     it 'must have an admin approve a therapist listing before listing shows up'
+    it 'can edit its listing'
+    it 'cannot edit another listing'
 
   end
 end
 
 def create_therapist
-  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, verified: true)
 end
 
 def sign_in

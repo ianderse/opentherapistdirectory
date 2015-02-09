@@ -18,7 +18,17 @@ class TherapistsController < ApplicationController
     @therapist = Therapist.find(current_user.therapist.id)
   end
 
+  def create
+    Therapist.create(therapist_params)
+    flash[:notice] = "Thank you for Submitting your Practice"
+    redirect_to root_path
+  end
+
   private
+
+  def therapist_params
+    params.require(:therapist).permit(:first_name, :last_name, :email, :certifications, :sliding_scale, :cost)
+  end
 
   def verify_user
     if !current_user
