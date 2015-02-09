@@ -82,8 +82,6 @@ describe 'authenticated user', type: :feature do
       click_link(Therapist.first.full_name)
     end
 
-    it 'can share a therapist'
-
     it 'can sign up to list as a therapist' do
       sign_in
       click_link('List Your Practice')
@@ -100,6 +98,7 @@ describe 'authenticated user', type: :feature do
     it 'must have an admin approve a therapist listing before listing shows up'
     it 'can edit its listing'
     it 'cannot edit another listing'
+    it 'can share a therapist'
 
   end
 end
