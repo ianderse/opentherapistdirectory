@@ -93,6 +93,7 @@ describe 'authenticated user', type: :feature do
       fill_in 'therapist_cost', :with => '$50 - $100'
       click_on('List Practice')
       expect(page).to have_content('Thank you for Submitting your Practice')
+      expect(Therapist.all.size).to eq(1)
     end
 
     it 'must have an admin approve a therapist listing before listing shows up'
