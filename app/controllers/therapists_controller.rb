@@ -12,6 +12,7 @@ class TherapistsController < ApplicationController
 
   def new
     @therapist = Therapist.new
+    @therapist.build_location
   end
 
   def edit
@@ -32,7 +33,14 @@ class TherapistsController < ApplicationController
   private
 
   def therapist_params
-    params.require(:therapist).permit(:first_name, :last_name, :email, :certifications, :sliding_scale, :cost)
+    params.require(:therapist).permit(:first_name,
+                                      :last_name,
+                                      :email,
+                                      :certifications,
+                                      :sliding_scale,
+                                      :cost,
+                                      :practice_name,
+                                      location_attributes: [:id, :street_1, :street_2, :city, :state, :zipcode, :phone])
   end
 
   def verify_user

@@ -32,6 +32,7 @@ describe 'admin user', type: :feature do
   end
 
   it 'can toggle verification for therapist listing'
+  it 'can click on a name for more information'
 
 end
 

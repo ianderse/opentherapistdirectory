@@ -91,14 +91,22 @@ describe 'authenticated user', type: :feature do
       fill_in 'therapist_email',     :with => 'test@example.com'
       fill_in 'therapist_certifications', :with => 'MA, LPC'
       fill_in 'therapist_cost', :with => '$50 - $100'
+      fill_in 'therapist_location_attributes_street_1', :with => '123 Test Street'
+      fill_in 'therapist_location_attributes_street_2', :with => 'Unit 222'
+      fill_in 'therapist_location_attributes_city', :with => 'Denver'
+      select "CO", :from => "therapist_location_attributes_state"
+      fill_in 'therapist_location_attributes_zipcode', :with => '80202'
+      fill_in 'therapist_location_attributes_phone', :with => '123-123-1234'
       click_on('List Practice')
       expect(page).to have_content('Thank you for Submitting your Practice')
       expect(Therapist.all.size).to eq(1)
+      expect(Therapist.last.location.city).to eq('Denver')
     end
 
     it 'must have an admin approve a therapist listing before listing shows up'
     it 'can edit its listing'
     it 'cannot edit another listing'
+    it 'can remove its own listing'
     it 'can share a therapist'
 
   end

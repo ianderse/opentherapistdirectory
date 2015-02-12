@@ -16,7 +16,24 @@
         <%= f.check_box :sliding_scale %><br/>
         <%= f.label "Average Session Cost"%>(ex. $50 - $100)
         <%= f.text_field :cost %>
-        <%= f.submit value: 'List Practice', class: "custom-button button round list-practice"%>
+        <%= f.label 'Practice Name' %>
+        <%= f.text_field :practice_name %>
+        <h2>Location</h2>
+        <%= f.fields_for :location do |l_f| %>
+          <%= l_f.label 'Street' %>
+          <%= l_f.text_field :street_1 %>
+          <%= l_f.label 'Street 2' %>
+          <%= l_f.text_field :street_2 %>
+          <%= l_f.label 'City' %>
+          <%= l_f.text_field :city %>
+          <%= l_f.label 'State' %>
+          <%= l_f.select :state, options_for_select(us_states) %>
+          <%= l_f.label 'Zipcode' %>
+          <%= l_f.text_field :zipcode %>
+          <%= l_f.label 'Phone Number' %>
+          <%= l_f.text_field :phone %>
+        <% end %>
+        <%= f.submit value: 'List Practice', class: "button round list-practice"%>
       <% end %>
     </div>
   </div>
