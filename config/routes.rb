@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
     get 'facilities',           to: 'facilities#index',          as: 'facilities'
     post 'facilities',          to: 'facilities#import',         as: 'import_facilities'
+
+    get 'therapists',           to: 'therapists#index',          as: 'therapists'
   end
 
   get  'facilities',            to: 'facilities#index',          as: 'facilities'
