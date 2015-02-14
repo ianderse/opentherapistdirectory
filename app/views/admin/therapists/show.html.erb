@@ -2,11 +2,12 @@
   <div class="row">
     <div class="large-6 push-3 columns">
       <table class="therapists-listing">
-        <tr><td><b>Name</b></td><td><b>Verified</b></td><td><b>Active</b></td></tr>
+        <tr><td><b>Name</b></td><td><b>Verified</b></td><td><b>Active</b></td><td><b>Email</b></td></tr>
           <tr>
             <td><%= @therapist.full_name %></td>
             <td><%= check_box_tag 'verified', @therapist.id , @therapist.verified, :class => "task-check" %></td>
             <td><%= check_box_tag 'active', @therapist.id , @therapist.active, :class => "task-check" %></td>
+            <td><%= mail_to @therapist.email %></td>
           </tr>
       </table>
     </div>
