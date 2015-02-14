@@ -5,7 +5,7 @@
         <tr><td><b>Name</b></td><td><b>Verified?</b></td></tr>
         <% @therapists.each do |therapist| %>
           <tr>
-            <td><%= therapist.full_name %></td>
+            <td><%= link_to therapist.full_name, admin_therapist_path(therapist) %></td>
             <td><%= therapist.verified %></td>
           </tr>
         <% end %>

@@ -31,7 +31,15 @@ describe 'admin user', type: :feature do
     expect(page).to have_content(Therapist.first.full_name)
   end
 
-  it 'can toggle verification for therapist listing'
+  it 'can toggle verification for therapist listing' do
+    sign_in
+    visit '/admin/dashboard'
+    click_on('List Therapists')
+    click_on(Therapist.first.full_name)
+    expect(page).to have_content('More Information')
+  end
+
+  it 'can deactivate a therapist listing'
   it 'can click on a name for more information'
 
 end

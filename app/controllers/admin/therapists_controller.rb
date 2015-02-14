@@ -3,7 +3,7 @@ class Admin::TherapistsController < Admin::BaseController
     @therapists = Therapist.all
   end
 
-  def import
-
+  def show
+    @therapist = Therapist.find(params[:id])
   end
 end

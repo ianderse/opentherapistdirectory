@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post 'facilities',          to: 'facilities#import',         as: 'import_facilities'
 
     get 'therapists',           to: 'therapists#index',          as: 'therapists'
+    get 'therapists/:id',       to: 'therapists#show',           as: 'therapist'
   end
 
   get  'facilities',            to: 'facilities#index',          as: 'facilities'
