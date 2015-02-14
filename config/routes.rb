@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     get 'therapists',           to: 'therapists#index',          as: 'therapists'
     get 'therapists/:id',       to: 'therapists#show',           as: 'therapist'
+    post 'therapists/:id/toggle', to: 'therapists#toggle'
   end
 
   get  'facilities',            to: 'facilities#index',          as: 'facilities'

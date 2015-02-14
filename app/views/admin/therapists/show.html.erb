@@ -5,8 +5,8 @@
         <tr><td><b>Name</b></td><td><b>Verified</b></td><td><b>Active</b></td></tr>
           <tr>
             <td><%= @therapist.full_name %></td>
-            <td><%= @therapist.verified %></td>
-            <td><%= @therapist.active %></td>
+            <td><%= check_box_tag 'verified', @therapist.id , @therapist.verified, :class => "task-check" %></td>
+            <td><%= check_box_tag 'active', @therapist.id , @therapist.active, :class => "task-check" %></td>
           </tr>
       </table>
     </div>

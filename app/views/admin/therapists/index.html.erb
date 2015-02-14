@@ -2,14 +2,34 @@
   <div class="row">
     <div class="large-6 pull-1 columns">
       <table class="therapists-listing">
-        <tr><td><b>Name</b></td><td><b>Verified?</b></td></tr>
+        <tr><td><b>Name</b></td><td><b>Verified?</b></td><td><b>Active</b></td></tr>
         <% @therapists.each do |therapist| %>
           <tr>
             <td><%= link_to therapist.full_name, admin_therapist_path(therapist) %></td>
-            <td><%= therapist.verified %></td>
+            <td><%= check_box_tag 'verified', therapist.id , therapist.verified, :class => "verified-check" %></td>
+            <td><%= check_box_tag 'active', therapist.id , therapist.active, :class => "active-check" %></td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
 </div>
+
+<script>
+$(".verified-check, .active-check").bind('change', function(){
+  if ($(this).is('.verified-check')){
+    $.ajax({
+      url: '/admin/therapists/'+this.value+'/toggle',
+      type: 'POST',
+      data: {"verified": this.checked}
+    });
+  }
+  else if ($(this).is('.active-check')){
+    $.ajax({
+      url: '/admin/therapists/'+this.value+'/toggle',
+      type: 'POST',
+      data: {"active": this.checked}
+    });
+  }
+});
+</script>
