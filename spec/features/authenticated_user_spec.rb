@@ -97,6 +97,7 @@ describe 'authenticated user', type: :feature do
       select "CO", :from => "therapist_location_attributes_state"
       fill_in 'therapist_location_attributes_zipcode', :with => '80202'
       fill_in 'therapist_location_attributes_phone', :with => '123-123-1234'
+      attach_file "therapist_picture", "spec/images/Ian.jpg"
       click_on('List Practice')
       expect(page).to have_content('Thank you for Submitting your Practice')
       expect(Therapist.all.size).to eq(1)
@@ -113,7 +114,7 @@ describe 'authenticated user', type: :feature do
 end
 
 def create_therapist
-  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100')
+  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'))
 end
 
 def sign_in
