@@ -1,5 +1,6 @@
 <div class="facility-container">
    <div class="large-10 push-1 columns" style="margin-top:20px">
+    <%= image_tag @therapist.picture.url(:medium) %>
     <h2><%= @therapist.full_name %></h2><hr/>
     <p><b>Description:</b> <%= @therapist.description %></p>
   </div>

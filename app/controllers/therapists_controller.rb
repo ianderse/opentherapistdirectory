@@ -40,6 +40,7 @@ class TherapistsController < ApplicationController
                                       :sliding_scale,
                                       :cost,
                                       :practice_name,
+                                      :picture,
                                       location_attributes: [:id, :street_1, :street_2, :city, :state, :zipcode, :phone])
   end
 

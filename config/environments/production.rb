@@ -95,4 +95,13 @@ Rails.application.configure do
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+
+  Paperclip.options[:command_path] = "/usr/bin/"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'opentherapistdirectory'
+   }
+ }
 end

@@ -49,4 +49,13 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'opentherapistdirectory'
+    }
+  }
+
 end
