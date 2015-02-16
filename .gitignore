@@ -18,6 +18,9 @@
 /config/secrets.yml
 /config/application.yml
 /config/aws.yml
+a/coverage/
+b/converage/
+/coverage
 
 # Ignore application configuration
 /config/application.yml
