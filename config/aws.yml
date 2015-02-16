@@ -1,0 +1,12 @@
+development:
+  access_key_id: AKIAJHL2E3IML7THMQZA
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAJHL2E3IML7THMQZA
+  secret_access_key: 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
+
+test:
+  access_key_id: TEST
+  secret_access_key: TEST
+  stub_requests: true
