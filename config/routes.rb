@@ -46,4 +46,5 @@ Rails.application.routes.draw do
   get  'therapists/:id',        to: 'therapists#show',           as: 'therapist'
   get  'therapists/:id/edit',   to: 'therapists#edit',           as: 'edit_therapist'
   post 'therapists',            to: 'therapists#create'
+  patch 'therapists/:id',       to: 'therapists#update'
 end

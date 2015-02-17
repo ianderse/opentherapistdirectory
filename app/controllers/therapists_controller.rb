@@ -2,7 +2,7 @@ class TherapistsController < ApplicationController
   before_action :verify_user, only: [:new, :edit]
 
 	def index
-    @states     ||= Therapist.includes(:location).pluck(:state).uniq.sort
+    @states   ||= Therapist.includes(:location).pluck(:state).uniq.sort
     @therapists = Therapist.where(verified: true, active: true)
 	end
 
@@ -16,11 +16,22 @@ class TherapistsController < ApplicationController
   end
 
   def edit
-    @therapist = Therapist.find(current_user.therapist.id)
+    @therapist = Therapist.find(params[:id])
+  end
+
+  def update
+    @therapist = Therapist.find(params[:id])
+    if @therapist.update_attributes(therapist_params)
+      flash[:notice] = "Update Successful"
+      redirect_to therapist_path(@therapist.id)
+    else
+      render 'edit'
+    end
   end
 
   def create
     @therapist = Therapist.new(therapist_params)
+    @therapist.user_id = current_user.id
     if @therapist.save
       flash[:notice] = "Thank you for Submitting your Practice"
       redirect_to root_path
@@ -41,6 +52,7 @@ class TherapistsController < ApplicationController
                                       :cost,
                                       :practice_name,
                                       :picture,
+                                      :description,
                                       location_attributes: [:id, :street_1, :street_2, :city, :state, :zipcode, :phone])
   end
 
@@ -48,8 +60,6 @@ class TherapistsController < ApplicationController
     if !current_user
       flash[:error] = 'Please sign-in to list your practice'
       redirect_to root_path
-    elsif current_user.therapist
-      redirect_to edit_therapist_path
     end
   end
 end

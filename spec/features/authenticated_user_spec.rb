@@ -104,6 +104,13 @@ describe 'authenticated user', type: :feature do
       expect(Therapist.last.location.city).to eq('Denver')
     end
 
+    it 'can only create one therapist listing per user' do
+      sign_in
+      user = User.first
+      user.therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'))
+      visit '/'
+      expect(page).to have_content('Edit Your Practice')
+    end
     it 'must have an admin approve a therapist listing before listing shows up'
     it 'can edit its listing'
     it 'cannot edit another listing'
