@@ -107,7 +107,7 @@ describe 'authenticated user', type: :feature do
     it 'can only create one therapist listing per user' do
       sign_in
       user = User.first
-      user.therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'))
+      Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'), user_id: user.id)
       visit '/'
       expect(page).to have_content('Edit Your Practice')
     end

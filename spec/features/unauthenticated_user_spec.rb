@@ -72,8 +72,7 @@ describe 'unauthenticated user', type: :feature do
 
   it 'cannot sign up to list a practice without logging in' do
     visit '/'
-    click_link('List Your Practice')
-    expect(page).to have_content("Please sign-in to list your practice")
+    expect(page).to_not have_content('List Your Practice')
   end
 
   it 'cannot share a therapist without logging in'

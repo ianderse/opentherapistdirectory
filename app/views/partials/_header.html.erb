@@ -33,10 +33,12 @@
 	    	<li class="divider"></li>
 	      <li><%= link_to "Find a Therapist", therapists_path %></li>
 	      <li class="divider"></li>
-        <% if !current_user.therapist %>
-          <li><%= link_to "List Your Practice", new_therapist_path %></li>
-        <% else %>
-          <li><%= link_to "Edit Your Practice", edit_therapist_path(current_user.therapist.id) %></li>
+        <% if current_user %>
+          <% if !current_user.therapist %>
+            <li><%= link_to "List Your Practice", new_therapist_path %></li>
+          <% else %>
+            <li><%= link_to "Edit Your Practice", edit_therapist_path(current_user.therapist.id) %></li>
+          <% end %>
         <% end %>
         <li class="divider"></li>
 	      <li><%= link_to "Mental Health Resources", facilities_path %></li>
