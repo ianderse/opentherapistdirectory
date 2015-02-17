@@ -1,5 +1,5 @@
 class TherapistsController < ApplicationController
-  before_action :verify_user, only: [:new, :edit]
+  before_action :verify_user, only: [:edit]
 
 	def index
     @states   ||= Therapist.includes(:location).pluck(:state).uniq.sort
@@ -11,8 +11,13 @@ class TherapistsController < ApplicationController
   end
 
   def new
-    @therapist = Therapist.new
-    @therapist.build_location
+    if !current_user
+      flash[:error] = 'Please sign-in to list your practice'
+      redirect_to root_path
+    else
+      @therapist = Therapist.new
+      @therapist.build_location
+    end
   end
 
   def edit
@@ -57,8 +62,8 @@ class TherapistsController < ApplicationController
   end
 
   def verify_user
-    if !current_user
-      flash[:error] = 'Please sign-in to list your practice'
+    therapist = Therapist.find(params[:id])
+    if current_user.therapist != therapist
       redirect_to root_path
     end
   end
