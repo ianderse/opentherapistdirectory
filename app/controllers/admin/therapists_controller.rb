@@ -9,27 +9,16 @@ class Admin::TherapistsController < Admin::BaseController
 
   def toggle
     if params[:verified]
-      toggle_verified
+      toggle_attribute('verified')
     elsif params[:active]
-      toggle_active
+      toggle_attribute('active')
     end
   end
 
-  def toggle_verified
+  def toggle_attribute(attribute)
+    attr_sym = attribute.to_sym
     @therapist = Therapist.find(params[:id])
-
-    if @therapist.update_attributes(:verified => params[:verified])
-      render :nothing => true
-    else
-      flash[:errors] = 'Could Not Update Attribute'
-      redirect_to admin_dashboard_path
-    end
-  end
-
-  def toggle_active
-    @therapist = Therapist.find(params[:id])
-
-    if @therapist.update_attributes(:active => params[:active])
+    if @therapist.update_attributes(attr_sym => params[attr_sym])
       render :nothing => true
     else
       flash[:errors] = 'Could Not Update Attribute'

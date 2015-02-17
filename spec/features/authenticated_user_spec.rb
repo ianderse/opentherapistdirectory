@@ -129,6 +129,7 @@ describe 'authenticated user', type: :feature do
       visit "/therapists/#{Therapist.first.id}/edit"
       expect(current_path).to eq(root_path)
     end
+
     it 'can remove its own listing'
     it 'can share a therapist'
 
