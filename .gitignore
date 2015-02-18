@@ -17,6 +17,7 @@
 
 /config/secrets.yml
 /config/application.yml
+/config/aws.yml
 
 # Ignore application configuration
 /config/application.yml
