@@ -21,7 +21,7 @@ class Admin::TherapistsController < Admin::BaseController
     if @therapist.update_attributes(attr_sym => params[attr_sym])
       render :nothing => true
     else
-      flash[:errors] = 'Could Not Update Attribute'
+      flash[:error] = 'Could Not Update Attribute'
       redirect_to admin_dashboard_path
     end
   end
