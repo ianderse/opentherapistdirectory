@@ -55,6 +55,18 @@ class TherapistsController < ApplicationController
     redirect_to root_path
   end
 
+  def save_therapist
+    if current_user
+      respond_to do |format|
+        if !current_user.saved_therapists.include?(params[:id])
+          current_user.saved_therapists << params[:id]
+          current_user.save!
+        end
+        format.js{render layout: false}
+      end
+    end
+  end
+
   private
 
   def therapist_params

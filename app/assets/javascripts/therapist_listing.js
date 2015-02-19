@@ -5,7 +5,7 @@
 function render(element) {
   var location_address = element['location']['street_1'] + " " + element['location']['street_2'] + " " + element['location']['city'] + " " + element['location']['state'] + " " + element['location']['zipcode']
   location_address = location_address.replace(null, "");
-  var listingElement = $("<li><h3>" + element['first_name'] + " " + element['last_name'] + "</h3><a href='#return-check'><i class='fa fa-plus-circle add-map-pin' style='float:right' data-street='" + location_address + "'></i></a><p>" + location_address + "<br/><a class='more-information' href='/therapists/" + element['id'] + "'>More Information</a>" + "<a class='add-therapist' href='/therapist/save/" + element['id'] + "' remote: true> Save Therapist</a>" + "</li>");
+  var listingElement = $("<li><h3>" + element['first_name'] + " " + element['last_name'] + "</h3><p>" + location_address + "<br/><a class='more-information' href='/therapists/" + element['id'] + "'>More Information</a>" + "<a class='add-therapist' href='/therapist/save/" + element['id'] + "' remote: true> Save Therapist</a>" + "</li>");
   $('.list').append(listingElement);
   addTherapist();
 };
