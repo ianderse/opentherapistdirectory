@@ -1,46 +1,42 @@
-<h2 id='new-therapist'>Update Your Practice</h2>
-
 <div class="row">
-  <div class="large-4 large-centered columns">
-    <div id="user-welcome">
+  <div class="large-centered columns">
+    <div id="new-therapist">
+      <h1>Edit Your Practice</h1><hr>
       <%= form_for @therapist, :html => { :multipart => true } do |f| %>
-        <%= f.label 'First Name' %>
+        <p class='contact'><%= f.label 'First Name' %></p>
         <%= f.text_field :first_name %>
-        <%= f.label 'Last Name' %>
+        <p class='contact'><%= f.label 'Last Name' %></p>
         <%= f.text_field :last_name %>
-        <%= f.label 'Email' %>
+        <p class='contact'><%= f.label 'Email' %></p>
         <%= f.text_field :email %>
-        <%= f.label 'Certifications' %>
+        <p class='contact'><%= f.label 'Certifications' %></p>
         <%= f.text_field :certifications %>
-        <%= f.label 'Sliding Scale?', :style => 'display: inline-block' %>
-        <%= f.check_box :sliding_scale %><br/>
-        <%= f.label "Average Session Cost"%>(ex. $50 - $100)
+        <p class='contact'><%= f.label 'Sliding Scale?' %></p>
+        <p class='slide-left'><%= f.check_box :sliding_scale %></p>
+        <p class='contact'><%= f.label "Average Session Cost"%></p><p class='slide-left'>(ex. $50 - $100)</p>
         <%= f.text_field :cost %>
-        <%= f.label 'Practice Name' %>
+        <p class='contact'><%= f.label 'Practice Name' %></p>
         <%= f.text_field :practice_name %>
-        <%= f.label 'Description' %>
+        <p class='contact'><%= f.label 'Description' %></p>
         <%= f.text_area :description %>
-        <%= f.label 'Profile Picture' %>(max size: 400x400, 2 MB)
-        <%= f.file_field :picture %>
-        <h2>Location</h2>
+        <p class='contact'><%= f.label 'Profile Picture' %></p><p class='slide-left'>(max size: 400x400, 2 MB)
+        <p class='slide-left'><%= f.file_field :picture %></p>
+        <h2>Location</h2><hr>
         <%= f.fields_for :location do |l_f| %>
-          <%= l_f.label 'Street' %>
-          <%= l_f.text_field :street_1 %>
-          <%= l_f.label 'Street 2' %>
-          <%= l_f.text_field :street_2 %>
-          <%= l_f.label 'City' %>
-          <%= l_f.text_field :city %>
-          <%= l_f.label 'State' %>
-          <%= l_f.select :state, options_for_select(us_states, @therapist.location.state) %>
-          <%= l_f.label 'Zipcode' %>
-          <%= l_f.text_field :zipcode %>
-          <%= l_f.label 'Phone Number' %>
-          <%= l_f.text_field :phone %>
+          <p class='contact'><%= l_f.label 'Street' %></p>
+          <p class='slide-left'><%= l_f.text_field :street_1 %></p>
+          <p class='contact'><%= l_f.label 'Street 2' %></p>
+          <p class='slide-left'><%= l_f.text_field :street_2 %></p>
+          <p class='contact'><%= l_f.label 'City' %></p>
+          <p class='slide-left'><%= l_f.text_field :city %></p>
+          <p class='contact'><%= l_f.label 'State' %></p>
+          <p class='slide-left'><%= l_f.select :state, options_for_select(us_states) %></p>
+          <p class='contact'><%= l_f.label 'Zipcode' %></p>
+          <p class='slide-left'><%= l_f.text_field :zipcode %></p>
+          <p class='contact'><%= l_f.label 'Phone Number' %></p>
+          <p class='slide-left'><%= l_f.text_field :phone %></p>
         <% end %>
-        <%= f.submit value: 'Update Practice', class: "button round list-practice"%>
-      <% end %>
-      <% form_for @therapist, :html => {:method => :delete} do |f| %>
-        <%= f.submit value: 'Delete Listing', id: "remove-listing" %>
+        <%= f.submit value: 'Update Practice', class: "buttom"%>
       <% end %>
     </div>
   </div>
