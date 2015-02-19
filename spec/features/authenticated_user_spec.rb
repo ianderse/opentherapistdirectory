@@ -68,18 +68,18 @@ describe 'authenticated user', type: :feature do
   end
 
   describe 'therapist view' do
-    it 'can view a listing of all therapists' do
+    it 'can view a listing of all therapists', js: true do
       create_therapist
-      sign_in
+      sign_in_js
       click_link('Find a Therapist')
       expect(page).to have_content(Therapist.first.full_name)
     end
 
-    it 'can view more information on a therapist' do
+    it 'can view more information on a therapist', js: true do
       create_therapist
-      sign_in
+      sign_in_js
       click_link('Find a Therapist')
-      click_link(Therapist.first.full_name)
+      click_link('More Information')
     end
 
     it 'can sign up to list as a therapist' do
@@ -145,7 +145,8 @@ describe 'authenticated user', type: :feature do
 end
 
 def create_therapist
-  Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'))
+  therapist = Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'))
+  Location.create(city: 'Denver', state: 'CO', zipcode: '80202', street_1: '123 Test Street', street_2: 'Apt. 301', phone: '222-222-2222', therapist_id: therapist.id)
 end
 
 def sign_in
