@@ -29,9 +29,9 @@ $(function(){
 				Find a Mental Health Facility
 				<div class='large-12 columns'>
 					<div class="lighter">
-						<%= form_for :facilities, :url => url_for(:controller => 'facilities', :action => 'index'), :html => {:class => "search rounded", :id => 'search-form'}, method: :get do |f| %>
+						<%= form_for :facilities, :url => url_for(:controller => 'facilities', :action => 'index'), :html => {:class => "rounded", :id => 'search-form'}, method: :get do |f| %>
 							<%= f.text_field :params, :placeholder => "State", style:"display:inline-block" %>
-							<%= f.submit "Search", style:"display:inline-block" %>
+							<%= f.submit "Search", class: 'search-submit-index' %>
 						<% end %>
 					</div>
 				</div>
