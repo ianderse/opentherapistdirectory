@@ -15,6 +15,8 @@ class Admin::TherapistsController < Admin::BaseController
     end
   end
 
+  private
+
   def toggle_attribute(attribute)
     attr_sym = attribute.to_sym
     @therapist = Therapist.find(params[:id])

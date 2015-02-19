@@ -81,9 +81,6 @@
 	opacity:1.0;
 }
 
-.search {
-}
-
 .rounded {
 	border-radius:15px;
 	-moz-border-radius:15px;
@@ -104,7 +101,7 @@
 	margin-bottom: 45;
 }
 
-select {
+#filter-state {
 	width:50px !important;
 }
 

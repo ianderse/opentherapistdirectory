@@ -39,6 +39,9 @@
         <% end %>
         <%= f.submit value: 'Update Practice', class: "button round list-practice"%>
       <% end %>
+      <% form_for @therapist, :html => {:method => :delete} do |f| %>
+        <%= f.submit value: 'Delete Listing', id: "remove-listing" %>
+      <% end %>
     </div>
   </div>
 </div>

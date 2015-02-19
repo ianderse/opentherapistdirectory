@@ -130,7 +130,16 @@ describe 'authenticated user', type: :feature do
       expect(current_path).to eq(root_path)
     end
 
-    it 'can remove its own listing'
+    it 'can remove its own listing' do
+      sign_in
+      user = User.first
+      therapist = Therapist.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence, verified: true, active: true, sliding_scale: true, email: Faker::Internet.email, certifications: 'MA, LPC', cost: '$50-$100', picture: File.new(Rails.root + 'spec/images/Ian.jpg'), user_id: user.id)
+      visit "/therapists/#{therapist.id}/edit"
+      expect(page).to have_css('remove-listing')
+      click_link('Delete Listing')
+      expect(Therapist.all.size).to eq(0)
+    end
+
     it 'can share a therapist'
 
   end
