@@ -38,6 +38,9 @@
         <% end %>
         <%= f.submit value: 'Update Practice', class: "buttom"%>
       <% end %>
+
+      <%= button_to "Delete Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
+
     </div>
   </div>
 </div>

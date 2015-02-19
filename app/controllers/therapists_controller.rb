@@ -46,6 +46,12 @@ class TherapistsController < ApplicationController
     end
   end
 
+  def destroy
+    @therapist = Therapist.find(params[:id])
+    @therapist.destroy
+    redirect_to root_path
+  end
+
   private
 
   def therapist_params

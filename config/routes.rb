@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get  'therapists',            to: 'therapists#index',          as: 'therapists'
   get  'therapists/new',        to: 'therapists#new',            as: 'new_therapist'
   get  'therapists/:id',        to: 'therapists#show',           as: 'therapist'
+  delete 'therapists/:id',      to: 'therapists#destroy'
   get  'therapists/:id/edit',   to: 'therapists#edit',           as: 'edit_therapist'
   post 'therapists',            to: 'therapists#create'
   patch 'therapists/:id',       to: 'therapists#update'
