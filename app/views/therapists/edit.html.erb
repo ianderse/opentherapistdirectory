@@ -30,7 +30,7 @@
           <p class='contact'><%= l_f.label 'City' %></p>
           <p class='slide-left'><%= l_f.text_field :city %></p>
           <p class='contact'><%= l_f.label 'State' %></p>
-          <p class='slide-left'><%= l_f.select :state, options_for_select(us_states) %></p>
+          <p class='slide-left'><%= l_f.select :state, options_for_select(us_states, @therapist.location.state) %></p>
           <p class='contact'><%= l_f.label 'Zipcode' %></p>
           <p class='slide-left'><%= l_f.text_field :zipcode %></p>
           <p class='contact'><%= l_f.label 'Phone Number' %></p>
