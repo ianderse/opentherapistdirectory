@@ -1,12 +1,12 @@
-<div id="herapists" style="margin-top:45px; height:100%; width:100%;">
+<div id="therapists" style="margin-top:40px; height:100%; width:100%;">
   <div class="row">
-    <div class="large-9 push-4 columns" style="margin-top:20px">
+    <div class="large-9 push-3 columns">
         <% if !current_user %>
           <small style="float:right">Sign in to save Therapists to your profile.</small>
         <% else %>
           <small style="float:right"><%= link_to "My Saved Therapists", user_path %></small>
         <% end %>
-      <h3>Open Therapist Directory<small> Therapist Finder</small></h3>
+      <h2>Open Therapist Directory<small> Therapist Finder</small></h2><hr>
       <ul class="filter" style="margin-bottom:0px">
         <p style="display:inline-block">State:</p>
         <form action="" style="display:inline-block">
