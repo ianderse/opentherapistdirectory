@@ -80,6 +80,7 @@ class TherapistsController < ApplicationController
                                       :practice_name,
                                       :picture,
                                       :description,
+                                      :website,
                                       location_attributes: [:id, :street_1, :street_2, :city, :state, :zipcode, :phone])
   end
 
