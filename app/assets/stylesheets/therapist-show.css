@@ -1,0 +1,18 @@
+.therapist-img-med {
+  float: left;
+  margin-right: 10px;
+}
+
+.th-show-description {
+  margin-top: 50px;
+  font-weight: lighter;
+}
+
+.th-show-phone {
+  float: right;
+  display: inline-block;
+}
+
+.th-show-email {
+  float: right;
+}

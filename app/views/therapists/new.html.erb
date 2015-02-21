@@ -17,9 +17,9 @@
         <%= f.text_field :cost %>
         <p class='contact'><%= f.label 'Practice Name' %></p>
         <%= f.text_field :practice_name %>
-        <p class='contact'><%= f.label 'Description' %></p>
+        <p class='contact'><%= f.label 'Describe Your Therapeutic Orientation' %></p>
         <%= f.text_area :description %>
-        <p class='contact'><%= f.label 'Profile Picture' %></p><p class='slide-left'>(max size: 400x400, 2 MB)
+        <p class='contact'><%= f.label 'Profile Picture' %></p><p class='slide-left'>(max size: 300x300, 2 MB)
         <p class='slide-left'><%= f.file_field :picture %></p>
         <h2>Location</h2><hr>
         <%= f.fields_for :location do |l_f| %>

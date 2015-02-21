@@ -4,7 +4,7 @@ class Therapist < ActiveRecord::Base
   accepts_nested_attributes_for :location
   validates :first_name, :last_name, :email, :certifications, :cost, presence: true
 
-  has_attached_file :picture, :styles => { :medium => "400x400#", :thumb => "150x150#" }
+  has_attached_file :picture, :styles => { :medium => "300x300#", :thumb => "150x150#" }
   validates_attachment :picture, :presence => true,
                        :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
                        :size => { :less_than => 2.megabytes }
