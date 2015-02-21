@@ -4,6 +4,7 @@
     <h2><%= @therapist.full_name %> <%= @therapist.certifications %>
       <div class="th-show-phone"><%= @therapist.phone %></div></h2>
     <div class="th-show-email"><%= mail_to @therapist.email %></div>
+    <div class="th-show-website"><%= link_to @therapist.website, @therapist.website %></div>
     <div class="th-show-description"><%= @therapist.description %></div>
   </div>
 </div>
