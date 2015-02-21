@@ -4,7 +4,7 @@ class Therapist < ActiveRecord::Base
   accepts_nested_attributes_for :location
   validates :first_name, :last_name, :email, :certifications, :cost, presence: true
 
-  has_attached_file :picture, :styles => { :medium => "300x300#", :thumb => "150x150#" }
+  has_attached_file :picture, :styles => { :medium => "200x200#", :thumb => "150x150#" }
   validates_attachment :picture, :presence => true,
                        :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
                        :size => { :less_than => 2.megabytes }
@@ -23,5 +23,13 @@ class Therapist < ActiveRecord::Base
 
   def phone
     ActiveSupport::NumberHelper.number_to_phone(location.phone, area_code: true)
+  end
+
+  def sliding_scale?
+    sliding_scale ? 'Yes' : 'No'
+  end
+
+  def free_consultation?
+    free_consultation ? 'Yes' : 'No'
   end
 end

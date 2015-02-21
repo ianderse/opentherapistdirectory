@@ -1,10 +1,14 @@
 .therapist-img-med {
   float: left;
   margin-right: 10px;
+  margin-bottom: 80px;
+  border: 1px solid black;
 }
 
 .th-show-description {
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  margin-left:210px;
   font-weight: lighter;
 }
 
@@ -15,4 +19,21 @@
 
 .th-show-email {
   float: right;
+}
+
+.th-show-website {
+  float: right;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right: 1px solid black;
+}
+
+.th-show-info {
+  background-color: #D6E6EC;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.th-show-info-bot {
+  margin-left: 210px;
 }

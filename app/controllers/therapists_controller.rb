@@ -81,6 +81,7 @@ class TherapistsController < ApplicationController
                                       :picture,
                                       :description,
                                       :website,
+                                      :free_consultation,
                                       location_attributes: [:id, :street_1, :street_2, :city, :state, :zipcode, :phone])
   end
 

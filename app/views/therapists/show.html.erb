@@ -1,10 +1,18 @@
 <div class="therapist-container">
    <div class="large-10 push-1 columns" style="margin-top:40px">
-    <%= image_tag @therapist.picture.url(:medium), class: 'therapist-img-med' %>
-    <h2><%= @therapist.full_name %> <%= @therapist.certifications %>
+
+    <div class="th-show-info">
+      <%= image_tag @therapist.picture.url(:medium), class: 'therapist-img-med' %>
+      <h2><%= @therapist.full_name %> <%= @therapist.certifications %>
       <div class="th-show-phone"><%= @therapist.phone %></div></h2>
-    <div class="th-show-email"><%= mail_to @therapist.email %></div>
-    <div class="th-show-website"><%= link_to @therapist.website, @therapist.website %></div>
-    <div class="th-show-description"><%= @therapist.description %></div>
+      <div class="th-show-email"><%= mail_to @therapist.email, 'Email' %></div>
+      <div class="th-show-website"><%= link_to 'Website', @therapist.website %></div>
+      <div class="th-show-description"><%= @therapist.description %></div>
+      <div class="th-show-info-bot">
+        <div class="th-show-avgcost">Average Cost: <%= @therapist.cost %></div>
+        <div class="th-show-sliding">Sliding Scale?: <%= @therapist.sliding_scale? %></div>
+        <div class="th-show-consult">Free Consultation?: <%= @therapist.free_consultation? %></div>
+      </div>
+    </div>
   </div>
 </div>
