@@ -15,6 +15,20 @@
   margin:0;
 }
 
+.list > li > p {
+  margin: 0px;
+}
+
+.list > li > h3 > .phone {
+  font-weight: bold;
+  float: right;
+  display:inline-block;
+}
+
+.list > li > .description {
+  font-weight: lighter;
+}
+
 .list > li {
   display:block;
   background-color: #eee;
@@ -49,7 +63,6 @@ h3 {
   border:solid 1px #ccc;
   border-radius: 5px;
   padding:7px 14px;
-  margin-bottom:10px
 }
 
 input:focus {

@@ -16,4 +16,12 @@ class Therapist < ActiveRecord::Base
   def picture_url
     picture.url(:thumb)
   end
+
+  def trunc_desc
+    description.truncate(210)
+  end
+
+  def phone
+    ActiveSupport::NumberHelper.number_to_phone(location.phone, area_code: true)
+  end
 end

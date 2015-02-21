@@ -1,11 +1,12 @@
 class TherapistsController < ApplicationController
+
   before_action :verify_user, only: [:edit]
 
 	def index
     @states   ||= Therapist.includes(:location).pluck(:state).uniq.sort
     all_therapists = Therapist.where(verified: true, active: true)
     # @first_therapists = all_therapists.find_all{|therapist| therapist.location.state == @states.first}.to_json.html_safe
-    @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name]).html_safe
+    @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
     @initial_state = @states.first.upcase.to_json.html_safe
 	end
 
