@@ -43,6 +43,7 @@ class TherapistsController < ApplicationController
     @therapist.user_id = current_user.id
     if @therapist.save
       flash[:notice] = "Thank you for Submitting your Practice"
+      confirm_signup(@therapist.id)
       redirect_to root_path
     else
       flash[:errors] = @therapist.errors.full_messages
@@ -52,8 +53,15 @@ class TherapistsController < ApplicationController
 
   def destroy
     @therapist = Therapist.find(params[:id])
-    @therapist.destroy
-    redirect_to root_path
+    if @therapist.active
+      @therapist.active = false
+      @therapist.save
+      redirect_to root_path
+    else
+      @therapist.active = true
+      @therapist.save
+      redirect_to root_path
+    end
   end
 
   def save_therapist
@@ -90,5 +98,9 @@ class TherapistsController < ApplicationController
     if current_user.therapist != therapist
       redirect_to root_path
     end
+  end
+
+  def confirm_signup(therapist_id)
+    Resque.enqueue(ConfirmSignupJob, therapist_id)
   end
 end

@@ -43,8 +43,11 @@
         <%= f.submit value: 'Update Practice', class: "buttom"%>
       <% end %>
 
-      <%= button_to "Delete Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
-
+      <% if @therapist.active %>
+        <%= button_to "De-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
+      <% else %>
+        <%= button_to "Re-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
+      <% end %>
     </div>
   </div>
 </div>
