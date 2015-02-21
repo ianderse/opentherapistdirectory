@@ -54,12 +54,10 @@ class TherapistsController < ApplicationController
   def destroy
     @therapist = Therapist.find(params[:id])
     if @therapist.active
-      @therapist.active = false
-      @therapist.save
+      toggle_active(@therapist)
       redirect_to root_path
     else
-      @therapist.active = true
-      @therapist.save
+      toggle_active(@therapist)
       redirect_to root_path
     end
   end
@@ -77,6 +75,11 @@ class TherapistsController < ApplicationController
   end
 
   private
+
+  def toggle_active(therapist)
+    therapist.active = !therapist.active
+    therapist.save
+  end
 
   def therapist_params
     params.require(:therapist).permit(:first_name,
