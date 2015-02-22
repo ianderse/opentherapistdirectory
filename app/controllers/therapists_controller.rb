@@ -98,7 +98,7 @@ class TherapistsController < ApplicationController
 
   def verify_user
     therapist = Therapist.find(params[:id])
-    if current_user.therapist != therapist
+    if current_user.therapist != therapist && current_user.role != 'admin'
       redirect_to root_path
     end
   end

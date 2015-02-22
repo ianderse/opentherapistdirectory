@@ -8,6 +8,7 @@
             <td><%= link_to therapist.full_name, admin_therapist_path(therapist) %></td>
             <td><%= check_box_tag 'verified', therapist.id , therapist.verified, :class => "verified-check" %></td>
             <td><%= check_box_tag 'active', therapist.id , therapist.active, :class => "active-check" %></td>
+            <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
           </tr>
         <% end %>
       </table>
