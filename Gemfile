@@ -5,7 +5,7 @@ gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', '~> 5.0.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
@@ -42,7 +42,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'unicorn'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.5.0'
 gem "font-awesome-rails"
 gem 'underscore-rails'
 gem 'resque'
