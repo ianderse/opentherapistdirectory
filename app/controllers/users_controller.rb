@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def show
-		if current_user
+		if current_user.is_a?(User)
 			@user = User.find(current_user.id)
 			@saved_facilities = @user.saved_facilities.map do |id|
 				Facility.find(id)

@@ -25,7 +25,7 @@ describe 'unauthenticated user', type: :feature do
     visit '/'
     click_link 'Mental Health Resources'
     expect(current_path).to eq(facilities_path)
-    expect(page).to have_content 'Mental Health Resource Finder'
+    expect(page).to have_content 'Facility Finder'
   end
 
   it 'can create a new user' do
@@ -72,7 +72,8 @@ describe 'unauthenticated user', type: :feature do
 
   it 'cannot sign up to list a practice without logging in' do
     visit '/'
-    expect(page).to_not have_content('List Your Practice')
+    click_link('List Your Practice')
+    expect(page).to have_content('Please sign-in to list your practice')
   end
 
   it 'cannot share a therapist without logging in'

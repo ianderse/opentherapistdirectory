@@ -1,5 +1,82 @@
+/* Martin Wolf CodePen Standard */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+/* Pen specific styles */
+
+.push_button {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  width: 10em;
+  height: 3em;
+  color: #fff;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  background-color: #2da3ee;
+  background-image: (linear-gradient(#5fc1ff 0%, #0088de 100%));
+  border: 1px solid #0769a7;
+  border-radius: 3px;
+  box-shadow: inset 0 0 7px 0 rgba(white, 0.5);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &:before {
+    height: 1px;
+    background: rgba(white, 0.4);
+  }
+  &:after {
+    height: 100%;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(black, 0.3);
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    background-image: (linear-gradient(#5fc1ff 0%, #007fd0 100%));
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid darken(#0769a7, 25%);
+    background-image: (linear-gradient(#5fc1ff 0%, #0078c5 100%));
+  }
+  &:active {
+    top: 1px;
+    &:after {
+      box-shadow: 0 1px 5px 0 rgba(black, 0.3);
+    }
+  }
+}
+
+/* END Pen specific styles */
+
+.sign-in-index {
+  float:right;
+}
+
+.dock {
+    background-image: url(boat-dock.jpg);
+  }
+.mindfulness {
+    background-image: url(mindfulness.jpg);
+  }
+.mindfulness2 {
+    background-image: url(mindfulness2.jpg);
+  }
+
 .donate {
   text-align: center;
+}
+
+#facilities_params {
+  margin-left:75px;
+  width: 300px;
 }
 
 .search-submit-index {
@@ -11,7 +88,7 @@
   font-weight: bold;
   line-height: 1;
   -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  -webkit-border-radius: 5px !important;
   border-radius: 5px;
   -moz-box-shadow: 0 1px 3px #999;
   -webkit-box-shadow: 0 1px 3px #999;
@@ -78,24 +155,30 @@
 	transition: all 0.3s ease;
 }
 
-#home-search {
-	width:50%;
+#home-search-facility {
+  float: right;
+  margin-right:90px;
+	width:40%;
 	height:350px;
-	margin:auto;
 	background-color:transparent;
 	border:0px;
 }
 
-#home-search-text {
-	text-align:center;
-	color:white;
-	opacity:1.0;
+#home-search-therapist {
+  float: left;
+  width:40%;
+  height:350px;
+  background-color:transparent;
+  border:0px;
+}
+
+.home-search-text {
+  text-align:center;
 }
 
 #home-textfield-two {
-	width:50%;
+	text-align:center;
 	height:350px;
-	margin:auto;
 	background-color:transparent;
 	border:0px;
 }
@@ -113,6 +196,7 @@
 }
 
 .lighter {
+  margin-left: 50px;
 	padding:40px 40px;
 	width:100%;
 }

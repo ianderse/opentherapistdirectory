@@ -5,7 +5,6 @@ class TherapistsController < ApplicationController
 	def index
     @states   ||= Therapist.includes(:location).pluck(:state).uniq.sort
     all_therapists = Therapist.where(verified: true, active: true)
-    # @first_therapists = all_therapists.find_all{|therapist| therapist.location.state == @states.first}.to_json.html_safe
     @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
     @initial_state = @states.first.upcase.to_json.html_safe
 	end
@@ -15,7 +14,7 @@ class TherapistsController < ApplicationController
   end
 
   def new
-    if !current_user
+    if current_user.is_a?(Guest)
       flash[:error] = 'Please sign-in to list your practice'
       redirect_to root_path
     else

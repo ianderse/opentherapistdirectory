@@ -2,11 +2,11 @@
   <div class="row">
     <div class="large-9 push-3 columns">
         <% if !current_user %>
-          <small style="float:right">Sign in to save Therapists to your profile.</small>
+          <small class='sign-in-index'>Sign in to save Therapists to your list.</small>
         <% else %>
           <small style="float:right"><%= link_to "My Saved Therapists", user_path %></small>
         <% end %>
-      <h2>Open Therapist Directory<small> Therapist Finder</small></h2><hr>
+      <h2 style='margin-top:20px'>Open Therapist Directory<small> Therapist Finder</small></h2><hr>
       <ul class="filter" style="margin-bottom:0px">
         <p style="display:inline-block">State:</p>
         <form action="" style="display:inline-block">

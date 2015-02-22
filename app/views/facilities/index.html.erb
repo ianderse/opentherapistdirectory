@@ -6,11 +6,11 @@
   <div class="row">
     <div class="large-9 push-4 columns" style="margin-top:20px">
         <% if !current_user %>
-          <small style="float:right">Sign in to save facilities to your profile.</small>
+          <small class='sign-in-index'>Sign in to save facilities to your list.</small>
         <% else %>
           <small style="float:right"><%= link_to "My Saved Facilities", user_path %></small>
         <% end %>
-      <h3>Open Therapist Directory<small> Mental Health Resource Finder</small></h3>
+      <h2 style='margin-top:20px'>Open Therapist Directory<small> Facility Finder</small></h2><hr>
       <ul class="filter" style="margin-bottom:0px">
         <p style="display:inline-block">State:</p>
         <form action="" style="display:inline-block">
@@ -55,7 +55,7 @@
   <script type="text/javascript" src="/assets/maps.js"></script>
 <script>
 
-  var initialState = <%= @initial_state %>
+  var initialState = 'AK'
   var facilities = <%= @facilities %>
   var firstFacilities   = <%= @first_facilities %>
   var currentFacilities = firstFacilities;

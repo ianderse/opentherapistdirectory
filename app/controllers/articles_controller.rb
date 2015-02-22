@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
 		@title = params[:title]
 		@link  = params[:url]
 
-		if !current_user
+		if current_user.is_a?(Guest)
 			redirect_to articles_path, alert: "Please sign-in to share articles"
 		end
 	end
