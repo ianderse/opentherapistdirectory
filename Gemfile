@@ -42,7 +42,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'unicorn'
-gem 'foundation-rails', '~> 5.5.0'
+gem 'foundation-rails', '5.4.5'
 gem "font-awesome-rails"
 gem 'underscore-rails'
 gem 'resque'
