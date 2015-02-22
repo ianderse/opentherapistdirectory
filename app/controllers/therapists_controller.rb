@@ -3,10 +3,10 @@ class TherapistsController < ApplicationController
   before_action :verify_user, only: [:edit]
 
 	def index
-    @states   ||= Therapist.includes(:location).pluck(:state).uniq.sort
+    @states      ||= StateHelper.state_list
     all_therapists = Therapist.where(verified: true, active: true)
     @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
-    @initial_state = @states.first.upcase.to_json.html_safe
+    @initial_state = 'CO'
 	end
 
   def show
