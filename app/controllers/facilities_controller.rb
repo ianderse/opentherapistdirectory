@@ -13,7 +13,7 @@ class FacilitiesController < ApplicationController
     all_facilities = Facility.all
 		@first_facilities = all_facilities.find_all{|facility| facility.location_state == @state.upcase}.to_json.html_safe
 		@facilities ||= all_facilities.to_json.html_safe
-		@states     ||= all_facilities.pluck(:location_state).uniq.sort
+		@states     ||= StateHelper.state_list
 		@initial_state = @state.upcase.to_json.html_safe
 	end
 
