@@ -6,4 +6,10 @@ class ConfirmationMailer < ActionMailer::Base
     @name = name
     mail(reply_to: 'ianderse@mac.com', to: @email, subject: "Thank You For Signing Up To Be Listed on Open Therapist Directory" )
   end
+
+  def verify_signup(email, name)
+    @email = email
+    @name = name
+    mail(reply_to: 'ianderse@mac.com', to: @email, subject: "Your Account is Verified!" )
+  end
 end

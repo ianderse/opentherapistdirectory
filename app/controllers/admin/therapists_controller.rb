@@ -8,7 +8,13 @@ class Admin::TherapistsController < Admin::BaseController
   end
 
   def toggle
+    @therapist = Therapist.find(params[:id])
     if params[:verified]
+      if !@therapist.verified_email_sent
+        @therapist.verified_email_sent = true
+        @therapist.save
+        verify_signup(params[:id])
+      end
       toggle_attribute('verified')
     elsif params[:active]
       toggle_attribute('active')
@@ -26,5 +32,9 @@ class Admin::TherapistsController < Admin::BaseController
       flash[:error] = 'Could Not Update Attribute'
       redirect_to admin_dashboard_path
     end
+  end
+
+  def verify_signup(therapist_id)
+    Resque.enqueue(VerifySignupJob, therapist_id)
   end
 end
