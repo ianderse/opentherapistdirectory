@@ -6,8 +6,28 @@ $oil : #333333;
 
 /* Pen specific styles */
 
+.push_button_text {
+  display: inline-block;
+  position: fixed;
+  opacity: 1.0;
+  color: white;
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.push_button_text_facilities {
+  display: inline-block;
+  position: fixed;
+  opacity: 1.0;
+  color: white;
+  margin-left: 70px;
+  margin-top: 5px;
+  width: 9em;
+}
+
 .push_button {
-  position: relative;
+  opacity: 0.5;
+  position: fixed;
   display: block;
   margin: 0 auto;
   padding: 15px;
