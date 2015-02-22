@@ -1,1 +1,0 @@
-function addMapPin(){$(".add-map-pin").on("click",function(){var a=$(this).data("street");addMarker(a)})}

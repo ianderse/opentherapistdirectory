@@ -6,7 +6,7 @@ class TherapistsController < ApplicationController
     @states      ||= StateHelper.state_list
     all_therapists = Therapist.where(verified: true, active: true)
     @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
-    @initial_state = 'CO'
+    @initial_state = 'CO'.to_json.html_safe
 	end
 
   def show

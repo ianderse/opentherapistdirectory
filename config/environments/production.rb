@@ -89,7 +89,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'yourdomain.com',
+    :domain => 'opentherapistdirectory.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
@@ -101,7 +101,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'opentherapistdirectory'
+      :bucket => 'opentherapistdirectory',
+      :access_key_id => ENV['S3_KEY'], 
+      :secret_access_key => ENV['S3_SECRET']
    }
  }
 end
