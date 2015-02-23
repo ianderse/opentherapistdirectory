@@ -5,7 +5,7 @@
 function render(element) {
   var location_address = element['location']['street_1'] + " " + element['location']['street_2'] + " " + element['location']['city'] + " " + element['location']['state'] + " " + element['location']['zipcode']
   location_address = location_address.replace(null, "");
-  var listingElement = $("<div><li><img src=" + element['picture_url'] + " alt='therapist-picture' class=therapist-thumb><h3>" + element['full_name'] + " " + element['certifications'] + "<p class='phone'>" + element['phone'] + "</p></h3><p>" + location_address + "<p class='description'>\"" + element['trunc_desc'] + "\"</p><br/><div class='bottom-items'><a class='more-information' href='/therapists/" + element['id'] + "'>More Information</a> | " + "<a class='add-therapist' href='/therapist/save/" + element['id'] + "' remote: true> Save Therapist</a></div></li></div>");
+  var listingElement = $("<div class='therapist-list-item'><li><img src=" + element['picture_url'] + " alt='therapist-picture' class=therapist-thumb><h3>" + element['full_name'] + " " + element['certifications'] + "<p class='phone'>" + element['phone'] + "</p></h3><p>" + location_address + "<p class='description'>\"" + element['trunc_desc'] + "\"</p><br/><div class='bottom-items'><a class='more-information' href='/therapists/" + element['id'] + "'>More Information</a> | " + "<a class='add-therapist' href='/therapist/save/" + element['id'] + "' remote: true> Save Therapist</a></div></li></div>");
   $('.list').append(listingElement);
   addTherapist();
 };

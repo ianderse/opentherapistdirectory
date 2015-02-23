@@ -7,7 +7,7 @@
 .bottom-items {
   position: absolute;
   bottom: 5px;
-  left: 180px;
+  left: 165px;
 }
 
 .list {
@@ -15,21 +15,25 @@
   margin:0;
 }
 
-.list > div > li > p {
+.therapist-list-item {
+  position: relative;
+}
+
+.list > .therapist-list-item > li > p {
   margin: 0px;
 }
 
-.list > div > li > h3 > .phone {
+.list > .therapist-list-item > li > h3 > .phone {
   font-weight: bold;
   float: right;
   display:inline-block;
 }
 
-.list > div > li > .description {
+.list > .therapist-list-item > li > .description {
   font-weight: lighter;
 }
 
-.list > div > li {
+.list > .therapist-list-item > li {
   display:block;
   background-color: #eee;
   padding:5px;
@@ -39,7 +43,7 @@
   margin-bottom: 5px;
 }
 
-.list > div > li:hover {
+.list > .therapist-list-item > li:hover {
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
