@@ -15,21 +15,21 @@
   margin:0;
 }
 
-.list > li > p {
+.list > div > li > p {
   margin: 0px;
 }
 
-.list > li > h3 > .phone {
+.list > div > li > h3 > .phone {
   font-weight: bold;
   float: right;
   display:inline-block;
 }
 
-.list > li > .description {
+.list > div > li > .description {
   font-weight: lighter;
 }
 
-.list > li {
+.list > div > li {
   display:block;
   background-color: #eee;
   padding:5px;
@@ -39,7 +39,7 @@
   margin-bottom: 5px;
 }
 
-.list > li:hover {
+.list > div > li:hover {
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
