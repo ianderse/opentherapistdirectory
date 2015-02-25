@@ -7,6 +7,10 @@ class HomeController < ApplicationController
 
 	end
 
+  def sign_in
+
+  end
+
 	def send_contact
 		passed_params = {:name => params[:name], :email => params[:email], :content => params[:content]}
 		Resque.enqueue(ContactJob, passed_params)

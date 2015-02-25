@@ -16,7 +16,7 @@ class TherapistsController < ApplicationController
   def new
     if current_user.is_a?(Guest)
       flash[:error] = 'Please sign-in to list your practice'
-      redirect_to root_path
+      redirect_to sign_in_path
     else
       @therapist = Therapist.new
       @therapist.build_location

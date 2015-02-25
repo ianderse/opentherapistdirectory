@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   get  'contact',               to: 'home#contact',              as: 'contact'
   post 'contact',               to: 'home#send_contact',         as: 'contact_us'
+  get  'sign_in',               to: 'home#sign_in',              as: 'sign_in'
 
   get  'user',                  to: 'users#show',                as: 'user'
 
