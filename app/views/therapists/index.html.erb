@@ -55,11 +55,11 @@
 
   var initialState = <%= @initial_state %>
   var therapists = <%= @therapists %>
-  var firstTherapists   = <%= @therapists %>
+  var firstTherapists   = <%= @first_therapists %>
   var currentTherapists = firstTherapists;
   var state = $('#filter-state').val();
 
-  _.each(therapists, render);
+  _.each(firstTherapists, render);
 
   setInitialState(initialState);
 

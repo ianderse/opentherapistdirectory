@@ -5,6 +5,7 @@ class TherapistsController < ApplicationController
 	def index
     @states      ||= StateHelper.state_list
     all_therapists = Therapist.where(verified: true, active: true)
+    @first_therapists = all_therapists.joins(:location).where(locations: { state: 'CO' }).to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
     @therapists ||= all_therapists.to_json(:include => :location, :methods => [:picture_url, :full_name, :trunc_desc, :phone]).html_safe
     @initial_state = 'CO'.to_json.html_safe
 	end
