@@ -1,18 +1,16 @@
-<div id="therapists-listing" style="margin-top:65px; height:100%; width:100%;">
-  <div class="row">
-    <div class="large-6 pull-1 columns">
-      <table class="therapists-listing">
-        <tr><td><b>Name</b></td><td><b>Verified?</b></td><td><b>Active</b></td></tr>
-        <% @therapists.each do |therapist| %>
-          <tr>
-            <td><%= link_to therapist.full_name, admin_therapist_path(therapist) %></td>
-            <td><%= check_box_tag 'verified', therapist.id , therapist.verified, :class => "verified-check" %></td>
-            <td><%= check_box_tag 'active', therapist.id , therapist.active, :class => "active-check" %></td>
-            <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+<div class="row" style="height:50%">
+  <div class="col-xs-6 col-xs-offset-1">
+    <table class="table">
+      <tr><td><b>Name</b></td><td><b>Verified?</b></td><td><b>Active</b></td><td><b>Edit</b></td></tr>
+      <% @therapists.each do |therapist| %>
+        <tr>
+          <td><%= link_to therapist.full_name, admin_therapist_path(therapist) %></td>
+          <td><%= check_box_tag 'verified', therapist.id , therapist.verified, :class => "verified-check" %></td>
+          <td><%= check_box_tag 'active', therapist.id , therapist.active, :class => "active-check" %></td>
+          <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 
