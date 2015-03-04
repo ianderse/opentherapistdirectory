@@ -42,6 +42,7 @@ describe 'authenticated user', type: :feature do
 
   it 'can save a facility to a list', js: true do
 		sign_in_js
+    click_link('Resources')
   	click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.add-facility').click
@@ -51,6 +52,7 @@ describe 'authenticated user', type: :feature do
 
   it 'can delete a facility from users saved list', js: true do
     sign_in_js
+    click_link('Resources')
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.add-facility').click
@@ -60,7 +62,7 @@ describe 'authenticated user', type: :feature do
 
   it 'can view more information on a facility', js: true do
     sign_in_js
-    visit '/'
+    click_link('Resources')
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.more-information').click

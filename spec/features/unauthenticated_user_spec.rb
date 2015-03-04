@@ -23,6 +23,7 @@ describe 'unauthenticated user', type: :feature do
 
   it "can browse all mental health resources" do
     visit '/'
+    click_link('Resources')
     click_link 'Mental Health Resources'
     expect(current_path).to eq(facilities_path)
     expect(page).to have_content 'Facility Finder'
@@ -80,6 +81,7 @@ describe 'unauthenticated user', type: :feature do
 
   it 'can view more information on a facility', js: true do
     visit '/'
+    click_link('Resources')
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.more-information').click
@@ -94,6 +96,7 @@ describe 'unauthenticated user', type: :feature do
   it "can sort facilities by name", js: true do
   	sorted_facilities = Facility.all.sort_by {|facility| facility.name1}
   	visit '/'
+    click_link('Resources')
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     first('.sort').click
@@ -108,6 +111,7 @@ describe 'unauthenticated user', type: :feature do
   it "can sort facilities by city", js: true do
     sorted_facilities = Facility.all.sort_by {|facility| facility.location_city}
     visit '/'
+    click_link('Resources')
     click_link('Mental Health Resources')
     select('CO', :from => 'filter-state')
     all('.sort').last.click

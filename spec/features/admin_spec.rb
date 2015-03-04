@@ -51,6 +51,7 @@ end
 
 def sign_in
   visit '/'
+  click_link('Sign Up/Login')
   click_link('Sign in with Twitter')
 end
 
