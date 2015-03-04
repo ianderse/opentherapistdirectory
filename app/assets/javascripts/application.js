@@ -14,6 +14,4 @@
 //= require jquery-ui
 //= require jquery_ujs
 
-//= require foundation
 //= require underscore
-$(document).foundation();
