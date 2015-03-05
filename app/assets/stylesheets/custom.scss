@@ -81,15 +81,13 @@
   float:right;
 }
 
-.dock {
-    background-image: url(boat-dock.jpg);
-  }
-.mindfulness {
-    background-image: url(mindfulness.jpg);
-  }
-.mindfulness2 {
-    background-image: url(mindfulness2.jpg);
-  }
+.full {
+  background: url(tree_on_hillside.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
 .donate {
   text-align: center;
