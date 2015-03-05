@@ -3,8 +3,7 @@ class ShareFacilityJob
 
   def self.perform(user_id, params)
   	@user     = User.find(user_id)
-  	facility_id = params['facility-id']
-  	@facility = Facility.find(facility_id)
+  	@facility = Facility.find(params['facility_id'])
   	@email    = params['email']
   	@name     = params['name']
 

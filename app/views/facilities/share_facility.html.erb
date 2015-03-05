@@ -1,34 +1,30 @@
-
-<div id="facilities-share" style="margin-top:90px; height:100%; width:100%;">
-	<div class="large-9 columns">
-		<div class="section-container tabs" data-section>
-    <section class="section">
-      <h5 class="title">Share Facility: <%= @facility.name1 %></h5>
-      <div class="content" data-slug="panel1">
-      	<%= form_tag facilities_share_path, method: :post, multipart: true, id: 'share-form' do %>
-				  <%= label_tag "Friend's Name" %>
-				  <%= text_field_tag :name %>
-				  <%= label_tag "Share Facility With" %>
-				  <%= text_field_tag :email %>
+<div class="container">
+	<div class="row text-center">
+    <div class="col-xs-12">
+      <h2 class="title">Share Facility: <%= @facility.name1 %></h2>
+      <hr/>
+    </div>
+  </div>
+  <div class="row" style="height:70%">
+    <div class="col-xs-6 col-xs-offset-3">
+      	<%= bootstrap_form_tag url: '/facilities/share' do |f| %>
+				  <%= f.text_field :name, label: "Friend's Name" %>
+				  <%= f.text_field :email, label: "Friend's Email" %>
 				  <%= hidden_field_tag 'facility_id', @facility.id %>
-				  <%= submit_tag "Send", id: 'send-button' %>
+				  <%= f.submit "Send", id: 'send-button' %>
 				<% end %>
       </div>
-    </section>
-  </div>
-	</div>
+    </div>
 </div>
 
-
 <script>
-$("#share-form").validate({
-	rules: {
-		name: "required",
-		email: {
-			required: true,
-			email: true
-		},
-	},
-});
-
+  $("#share-form").validate({
+  	rules: {
+  		name: "required",
+  		email: {
+  			required: true,
+  			email: true
+  		},
+  	},
+  });
 </script>
