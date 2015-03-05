@@ -2,13 +2,26 @@
 <head>
   <meta name="Description" content="Find a therapist near you. Free for clients. Free for therapists.">
 </head>
-<div class="row full" style='height:1080px'>
-  <div class="row text-center">
-    <div class="col-xs-6">
-      <%= link_to 'Find a Therapist', therapists_path %>
+<div class="full" style='height:1080px'>
+  <div class="row">
+    <div class="row text-center">
+      <div class="col-md-6 col-xs-12">
+        <div class="spacer-top-25">
+          <%= link_to 'Find a Therapist', therapists_path, class: 'well well-lg btn btn-lg' %>
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="spacer-top-25">
+          <%= link_to 'Find a Facility', facilities_path, class: 'well well-lg btn btn-lg' %>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <%= link_to 'Find a Mental Health Facility', facilities_path %>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12">
+      <div class="spacer-top-25">
+        <p class="lead well-transparent">Free For Clients. Free For Therapists.</p>
+      </div>
     </div>
   </div>
 </div>
