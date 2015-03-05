@@ -32,12 +32,13 @@ describe 'authenticated user', type: :feature do
 
   it 'can share an article' do
     sign_in
+    click_link('Resources')
     click_link('Articles')
     first_accordion = first('.accordion')
     within(first_accordion) do
       first(:link, "Share this").click
     end
-    expect(page).to have_content('Share article with')
+    expect(page).to have_content("Friend's Email")
   end
 
   it 'can save a facility to a list', js: true do
