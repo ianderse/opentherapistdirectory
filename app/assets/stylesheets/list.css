@@ -84,20 +84,3 @@ input:focus {
   display:inline-block;
   padding:5px;
 }
-
-.btn {
-  color: #ccc;
-  margin-right: 5px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  border: solid 1px #666;
-  display: block;
-  float: left;
-  background-color: rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  cursor: hand;
-}
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #fafafa;
-}

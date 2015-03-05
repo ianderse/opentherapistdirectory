@@ -1,23 +1,19 @@
 <% title "Share Article" %>
-<div id="articles-share" style="margin-top:90px; height:100%; width:100%;">
-	<div class="large-9 columns">
-		<div class="section-container tabs" data-section>
-    <section class="section">
-      <h5 class="title">Share Article: <%= @title %></h5>
-      <div class="content" data-slug="panel1">
-      	<%= form_tag articles_share_path, method: :post, multipart: true, id: 'share-form' do %>
-				  <%= label_tag "Friend's Name" %>
-				  <%= text_field_tag :name %>
-				  <%= label_tag "Share article with" %>
-				  <%= text_field_tag :email %>
-				  <%= hidden_field_tag 'article_title', @title %>
-				  <%= hidden_field_tag 'article_url', @link %>
-				  <%= submit_tag "Send Article" %>
-				<% end %>
-      </div>
-    </section>
+<div class="row" style="height:15%">
+	<div class="col-xs-10 col-xs-offset-1">
+    <h2 class="title">Share Article: <%= @title %></h2>
   </div>
-	</div>
+</div>
+<div class="row" style="height:70%">
+  <div class="col-xs-6 col-xs-offset-2">
+    <%= bootstrap_form_tag url: '/articles/share' do |f| %>
+      <%= f.text_field :name, label: "Friend's Name" %>
+      <%= f.text_field :email, label: "Friend's Email" %>
+      <%= hidden_field_tag 'article_title', @title %>
+      <%= hidden_field_tag 'article_url', @link %>
+      <%= f.submit "Send Article" %>
+    <% end %>
+  </div>
 </div>
 
 <script>
