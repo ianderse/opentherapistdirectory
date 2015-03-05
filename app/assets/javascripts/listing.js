@@ -5,7 +5,7 @@
 function render(element) {
   var location_address = element.location_street1 + " " + element.location_street2 + " " + element.location_city + " " + element.location_state + " " + element.location_zip
   location_address = location_address.replace(null, "");
-  var listingElement = $("<li><h3>" + element.name1 + "</h3><a href='#return-check'><i class='fa fa-plus-circle add-map-pin' style='float:right' data-street='" + location_address + "'></i></a><p>" + location_address + "<br/><a class='more-information' href='/facilities/" + element.id + "'>More Information</a>" + "<a class='add-facility' href='/facility/save/" + element.id + "' remote: true> Save Facility</a>" + "</li>");
+  var listingElement = $("<div class='facility-list-item'><li><h3>" + element.name1 + "</h3><a href='#return-check'><i class='fa fa-plus-circle add-map-pin' style='float:right' data-street='" + location_address + "'></i></a><p>" + location_address + "<br/></p><div class='facility-bottom-items'><a class='more-information' href='/facilities/" + element.id + "'>More Information</a> | " + "<a class='add-facility' href='/facility/save/" + element.id + "' remote: true> Save Facility</a></div></li></div>");
   listingElement.find('.add-map-pin').on('click', function() {
     var address = $(this).data('street');
     addMarker(address);

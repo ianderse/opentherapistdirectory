@@ -1,65 +1,89 @@
 <% title "Facility Finder" %>
 <head>
   <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=geometry&key=AIzaSyCB5IfaUUgXXtsuZNdCzF-H_MVsBLmw64M"></script>
-
   <meta name="Description" content="Find a mental health facility near you. Free for clients. Free for therapists.">
 </head>
 
-<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
+<div class="container">
   <div class="row">
-    <div class="large-9 push-4 columns" style="margin-top:20px">
+    <div class="col-md-2">
+      <div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class='donate'>
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="YGJNNCN8FP668">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </div>
+      <%= image_tag "otdlogo.png", class: 'hidden-xs hidden-sm'%>
+    </div>
+    <div class="col-md-7 col-md-offset-2" style='margin-top:20px'>
+      <h2>Open Therapist Directory<small> Facility Finder</small></h2>
+      <div style='text-align:right; margin-top:-30px'>
         <% if !current_user %>
           <small class='sign-in-index'>Sign in to save facilities to your list.</small>
         <% else %>
-          <small style="float:right"><%= link_to "My Saved Facilities", user_path %></small>
+          <small><%= link_to "My Saved Facilities", user_path %></small>
         <% end %>
-      <h2 style='margin-top:20px'>Open Therapist Directory<small> Facility Finder</small></h2><hr>
-      <ul class="filter" style="margin-bottom:0px">
-        <p style="display:inline-block">State:</p>
-        <form action="" style="display:inline-block">
-          <select name="filter-state" id="filter-state">
-            <% @states.each do |state| %>
-              <option value="<%=state%>"><%=state%></option>
-            <% end %>
-          </select>
-        </form>
-        <small style="float:right">Click on the plus icon to add the location to the map.</small>
-      </ul>
-        <ul class="list" style="padding-top:0px"></ul>
-    </div>
-    <div class="large-3 pull-10 columns">
-      <ul class="side-nav">
-        <div class='donate'>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="YGJNNCN8FP668">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-          </form>
-        </div>
-      <h1><%= image_tag "otdlogo.png", class: 'otdlogo'%></h1><hr>
-        <li><input class="search" placeholder="Search All Fields" style="width:100%" /></li><hr>
-        <li><span class="sort" data-sort="name" style="display:inline-block">Sort by Name</span></li>
-        <li><span class="sort" data-sort="city" style="display:inline-block">Sort by City</span></li><hr>
-        <li><input type="checkbox" class="check" data-check="spanish"/> Español Habla</input></li>
-        <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
-        <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
-        <li><input type="checkbox" class="check" data-check="substance"/> Substance Abuse</input></li>
-        <li><input type="checkbox" class="check" data-check="lgbt"/> LGBT Services</input></li>
-        <span id="return-check"></span>
-        <li><input type="checkbox" class="check" data-check="veterans"/> Veteran Services</input></li><hr>
-        <p id="distance"></p>
-        <div id="map-canvas" style="width:400px; height:400px;"></div>
-        <!-- OTD-Therapist Index -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:250px"
-             data-ad-client="ca-pub-3222712415808754"
-             data-ad-slot="8483377423">
-        </ins>
-      </ul>
+      </div>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 col-xs-6">
+      <p style="display:inline-block">State:</p>
+      <form action="" style="display:inline-block">
+        <select name="filter-state" id="filter-state" class="form-control">
+          <% @states.each do |state| %>
+            <option value="<%=state%>"><%=state%></option>
+          <% end %>
+        </select>
+      </form>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <small style="float:right">Click on the plus icon to add the location to the map.</small>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+      <ul class="list-unstyled">
+        <div class="col-xs-12">
+          <li><input class="search" placeholder="Search All Fields" style="width:100%" /></li><hr/>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <li><span class="sort" data-sort="name" style="display:inline-block">Sort by Name</span></li>
+          </div>
+          <div class="col-xs-6">
+            <li><span class="sort" data-sort="city" style="display:inline-block">Sort by City</span></li>
+          </div>
+
+        </div>
+        <hr/>
+        <div class="hidden-xs">
+          <li><input type="checkbox" class="check" data-check="spanish"/> Español Habla</input></li>
+          <li><input type="checkbox" class="check" data-check="medicaid"/> Medicaid</input></li>
+          <li><input type="checkbox" class="check" data-check="medicare"/> Medicare</input></li>
+          <li><input type="checkbox" class="check" data-check="substance"/> Substance Abuse</input></li>
+          <li><input type="checkbox" class="check" data-check="lgbt"/> LGBT Services</input></li>
+          <span id="return-check"></span>
+          <li><input type="checkbox" class="check" data-check="veterans"/> Veteran Services</input></li><hr>
+          <p id="distance"></p>
+          <div id="map-canvas" style="width:400px; height:400px;"></div>
+          <!-- OTD-Therapist Index -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:300px;height:250px"
+               data-ad-client="ca-pub-3222712415808754"
+               data-ad-slot="8483377423">
+          </ins>
+        </div>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-md-8 col-md-offset-1">
+      <ul class="list" style="padding-top:0px"></ul>
+    </div>
+  </div>
+</div> <!-- container -->
   <script type="text/javascript" src="/assets/listing.js"></script>
   <script type="text/javascript" src="/assets/maps.js"></script>
 <script>
