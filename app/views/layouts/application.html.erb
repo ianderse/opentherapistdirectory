@@ -16,12 +16,11 @@
 	 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
 	<body>
-	  <div id="main-header">
-			<%= render "partials/header" %>
-		</div>
-
-		<%= yield %>
-		<%= render 'partials/footer' %>
+    <div class='container-fluid'>
+      <%= render "partials/header" %>
+		  <%= yield %>
+      <%= render 'partials/footer' %>
+    </div>
 	</body>
   <script>
     $('.flash').hide().delay(200).fadeIn(800).delay(4000).fadeOut(800)
