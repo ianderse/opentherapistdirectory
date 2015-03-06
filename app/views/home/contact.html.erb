@@ -1,57 +1,60 @@
 <% title "Contact" %>
 
-<div class="large-9 columns" style="margin-top:45px">
-
-  <h3 style='text-align:center'>Get in Touch!</h3>
-  <p style='text-align:center'>Your feedback is appreciated.</p>
-
-  <div class="section-container tabs">
-    <section class="section">
-      <h5 class="title">Contact Me</h5>
-      <div class="content" data-slug="panel1">
-        <%= form_for contact_us_path, method: :post, multipart: true, id: 'contact-form' do %>
-          <div class="row collapse">
-            <div class="large-2 columns">
-              <%= label_tag "Your Name" %>
-            </div>
-            <div class="large-10 columns">
-              <%= text_field_tag :name %>
-            </div>
-          </div>
-          <div class="row collapse">
-            <div class="large-2 columns">
-              <%= label_tag "Your Email" %>
-            </div>
-            <div class="large-10 columns">
-              <%= text_field_tag :email %>
-            </div>
-          </div>
-          <%= label_tag "What's Up?" %>
-          <%= text_area_tag :content %>
+<div class="container">
+  <div class="row" style="margin-top:20px">
+    <div class="col-xs-12 text-center">
+      <h3>Get in Touch!</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <p>Your feedback is appreciated.</p>
+    </div>
+  </div>
+  <div class="row">
+    <%= bootstrap_form_tag url: '/contact' do |f| %>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <%= f.text_area :content, label: "Feedback" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
           <%= submit_tag "Send" %>
-        <% end %>
+        </div>
       </div>
-    </section>
-    <section class="section">
-      <h5 class="title">Developed By</h5>
-      <div class="content" data-slug="panel2">
-        <ul class="large-block-grid-5">
-          <li><a href="https://www.linkedin.com/profile/view?id=89002667"><%= image_tag("andersen_ian.jpg")%>Ian Andersen, MA</a></li>
-        </ul>
-      </div>
-    </section>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <h4>Developed By</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <a href="https://www.linkedin.com/profile/view?id=89002667"><%= image_tag("andersen_ian.jpg")%><br>Ian Andersen, MA</a>
+    </div>
   </div>
 </div>
 
 <script>
-$("#contact-form").validate({
-  rules: {
-    name: "required",
-    email: {
-      required: true,
-      email: true
+  $("#contact-form").validate({
+    rules: {
+      name: "required",
+      email: {
+        required: true,
+        email: true
+      },
     },
-  },
-});
-
+  });
 </script>
