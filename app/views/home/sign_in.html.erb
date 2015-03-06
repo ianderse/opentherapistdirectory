@@ -1,11 +1,24 @@
-<div id="sign-in-container">
-  <div class="large-10 push-1 columns" style="margin-top:20px">
-    <h1 id="sign-in-header">Sign In</h1><hr>
-    <div class='large-8 push-2 columns scalable dark text-center'>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <h1>Sign In</h1><hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-xs-12 scalable dark text-center hidden-xs'>
       <%= link_to "<i class='raster'></i><b class='divider'></b><span class='twitter-login'>Sign in with Twitter</span>".html_safe, user_omniauth_authorize_path(:twitter), class: 'twitter-auth'%>
     </div>
-      <h1 class='or-divider push-5 columns'>Or</h1>
-    <div class="push-4 columns">
+    <div class='col-xs-12 text-center visible-xs'>
+      <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <h1 class='or-divider'>Or</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
       <%= link_to "Sign-In <i class='icon-chevron-right'></i>".html_safe, new_user_session_path, class: 'sign-in button' %>
       <%= link_to "Sign-Up <i class='icon-chevron-right'></i>".html_safe, new_user_registration_path, class: 'sign-in button' %>
     </div>
