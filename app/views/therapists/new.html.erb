@@ -2,52 +2,35 @@
 
 <% title "List Your Practice" %>
 
-<div class="row">
-  <div class="large-centered columns">
-    <div id="new-therapist">
-      <h1>List Your Practice</h1><hr>
-      <%= form_for @therapist, :html => { :multipart => true } do |f| %>
-        <p class='contact'><%= f.label 'First Name' %></p>
-        <%= f.text_field :first_name %>
-        <p class='contact'><%= f.label 'Last Name' %></p>
-        <%= f.text_field :last_name %>
-        <p class='contact'><%= f.label 'Email' %></p>
-        <%= f.text_field :email %>
-        <p class='contact'><%= f.label 'Certifications' %></p>
-        <%= f.text_field :certifications %>
-        <p class='contact'><%= f.label 'Sliding Scale?' %></p>
-        <p class='slide-left'><%= f.check_box :sliding_scale %></p>
-        <p class='contact'><%= f.label 'Free Consultation?' %></p>
-        <p class='slide-left'><%= f.check_box :free_consultation %></p>
-        <p class='contact'><%= f.label "Average Session Cost"%></p><p class='slide-left'>(ex. $50 - $100)</p>
-        <%= f.text_field :cost %>
-        <p class='contact'><%= f.label 'Practice Name' %></p>
-        <%= f.text_field :practice_name %>
-        <p class='contact'><%= f.label 'Website' %></p>
-        <%= f.text_field :website %>
-        <p class='contact'><%= f.label 'Describe Your Therapeutic Orientation' %></p>
-        <%= f.text_area :description %>
-        <p class='contact'><%= f.label 'Profile Picture' %></p><p class='slide-left'>(max size: 300x300, 2 MB)
-        <p class='slide-left'><%= f.file_field :picture %></p>
-        <h2>Location</h2><hr>
-        <%= f.fields_for :location do |l_f| %>
-          <p class='contact'><%= l_f.label 'Street' %></p>
-          <p class='slide-left'><%= l_f.text_field :street_1 %></p>
-          <p class='contact'><%= l_f.label 'Street 2' %></p>
-          <p class='slide-left'><%= l_f.text_field :street_2 %></p>
-          <p class='contact'><%= l_f.label 'City' %></p>
-          <p class='slide-left'><%= l_f.text_field :city %></p>
-          <p class='contact'><%= l_f.label 'State' %></p>
-          <p class='slide-left'><%= l_f.select :state, options_for_select(us_states) %></p>
-          <p class='contact'><%= l_f.label 'Zipcode' %></p>
-          <p class='slide-left'><%= l_f.text_field :zipcode %></p>
-          <p class='contact'><%= l_f.label 'Phone Number' %></p>
-          <p class='slide-left'><%= l_f.text_field :phone %></p>
-        <% end %>
-        <%= f.submit value: 'List Practice', class: "buttom"%>
-      <% end %>
+<div class="container">
+  <div id="new-therapist">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+        <h1>List Your Practice</h1><hr>
+      </div>
     </div>
+    <%= bootstrap_form_for(@therapist, :html => { :multipart => true }) do |f| %>
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :email %>
+      <%= f.text_field :certifications %>
+      <%= f.check_box :sliding_scale, label: "Sliding Scale?" %>
+      <%= f.check_box :free_consultation, label: "Free Consultation?" %>
+      <%= f.text_field :cost, label: 'Average Session Cost: (ex. $50 - $100)' %>
+      <%= f.text_field :practice_name %>
+      <%= f.text_field :website %>
+      <%= f.text_area :description, label: 'Describe Your Therapeutic Orientation' %>
+      <%= f.file_field :picture, label: 'Profile Picture (max size: 300x300, 2 MB)' %>
+      <h2>Location</h2><hr>
+      <%= f.fields_for :location do |l_f| %>
+        <%= l_f.text_field :street_1 %>
+        <%= l_f.text_field :street_2 %>
+        <%= l_f.text_field :city %>
+        <%= l_f.select :state, options_for_select(us_states, @therapist.location.state) %>
+        <%= l_f.text_field :zipcode %>
+        <%= l_f.text_field :phone %>
+      <% end %>
+      <%= f.submit value: 'Submit Practice', class: "buttom"%>
+    <% end %>
   </div>
 </div>
-
-

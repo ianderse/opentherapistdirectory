@@ -1,41 +1,41 @@
 <% title "Edit Your Practice" %>
 <div class="container">
-    <div id="new-therapist">
-      <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
-          <h1>Edit Your Practice</h1><hr>
-        </div>
+  <div id="new-therapist">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+        <h1>Edit Your Practice</h1><hr>
       </div>
-      <%= bootstrap_form_for(@therapist, :html => { :multipart => true }) do |f| %>
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
-        <%= f.text_field :email %>
-        <%= f.text_field :certifications %>
-        <%= f.check_box :sliding_scale, label: "Sliding Scale?" %>
-        <%= f.check_box :free_consultation, label: "Free Consultation?" %>
-        <%= f.text_field :cost, label: 'Average Session Cost: (ex. $50 - $100)' %>
-        <%= f.text_field :practice_name %>
-        <%= f.text_field :website %>
-        <%= f.text_area :description, label: 'Describe Your Therapeutic Orientation' %>
-        <%= f.file_field :picture, label: 'Profile Picture (max size: 300x300, 2 MB)' %>
-        <h2>Location</h2><hr>
-        <%= f.fields_for :location do |l_f| %>
-          <%= l_f.text_field :street_1 %>
-          <%= l_f.text_field :street_2 %>
-          <%= l_f.text_field :city %>
-          <%= l_f.select :state, options_for_select(us_states, @therapist.location.state) %>
-          <%= l_f.text_field :zipcode %>
-          <%= l_f.text_field :phone %>
-        <% end %>
-        <%= f.submit value: 'Update Practice', class: "buttom"%>
-      <% end %>
-
-      <% if @therapist.active %>
-        <%= button_to "De-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
-      <% else %>
-        <%= button_to "Re-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
-      <% end %>
     </div>
+    <%= bootstrap_form_for(@therapist, :html => { :multipart => true }) do |f| %>
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :email %>
+      <%= f.text_field :certifications %>
+      <%= f.check_box :sliding_scale, label: "Sliding Scale?" %>
+      <%= f.check_box :free_consultation, label: "Free Consultation?" %>
+      <%= f.text_field :cost, label: 'Average Session Cost: (ex. $50 - $100)' %>
+      <%= f.text_field :practice_name %>
+      <%= f.text_field :website %>
+      <%= f.text_area :description, label: 'Describe Your Therapeutic Orientation' %>
+      <%= f.file_field :picture, label: 'Profile Picture (max size: 300x300, 2 MB)' %>
+      <h2>Location</h2><hr>
+      <%= f.fields_for :location do |l_f| %>
+        <%= l_f.text_field :street_1 %>
+        <%= l_f.text_field :street_2 %>
+        <%= l_f.text_field :city %>
+        <%= l_f.select :state, options_for_select(us_states, @therapist.location.state) %>
+        <%= l_f.text_field :zipcode %>
+        <%= l_f.text_field :phone %>
+      <% end %>
+      <%= f.submit value: 'Update Practice', class: "buttom"%>
+    <% end %>
+
+    <% if @therapist.active %>
+      <%= button_to "De-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
+    <% else %>
+      <%= button_to "Re-Activate Listing", therapist_path(@therapist), method: :delete, data: { confirm: "Are you sure?" }, class: "buttom delete" %>
+    <% end %>
+  </div>
 </div>
 
 
