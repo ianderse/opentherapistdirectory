@@ -1,25 +1,31 @@
 <% title "User" %>
-<div id="facilities" style="margin-top:45px; height:100%; width:100%;">
-  <div class="large-10 push-1 columns" style="margin-top:20px">
-    <h2 style="text-align:center"><%= @user.name %></h2><hr/>
-    <div class="large-5 columns">
-    	<div class='accordion'>
-  			<h3>My Saved Facilities</h3>
-  				<div>
-	  				<% @saved_facilities.each do |facility| %>
-	  					<p id="facility_<%= facility.id %>"><%= link_to facility.name1, facility_path(facility.id) %>
-	  						<%= form_tag(remove_facility_path(facility.id), remote: true) do %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h2><%= @user.name %></h2><hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class='accordion'>
+        <h3>My Saved Facilities</h3>
+          <div>
+            <% @saved_facilities.each do |facility| %>
+              <p id="facility_<%= facility.id %>"><%= link_to facility.name1, facility_path(facility.id) %>
+                <%= form_tag(remove_facility_path(facility.id), remote: true) do %>
                 <%= submit_tag 'remove', class: "button tiny", id: "remove_facility_#{facility.id}" %>
                 <% end %>
               </p><br/>
-	  				<% end %>
-	  			</div>
-  		</div>
-  	</div>
-   	<div class="large-5 columns">
-   		<div class='accordion'>
-  			<h3>My Saved Therapists</h3>
-  				<div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class='accordion'>
+        <h3>My Saved Therapists</h3>
+          <div>
             <% @saved_therapists.each do |therapist| %>
               <p id="therapist_<%= therapist.id %>"><%= link_to therapist.full_name, therapist_path(therapist.id) %>
                 <%= form_tag(remove_therapist_path(therapist.id), remote: true) do %>
@@ -28,8 +34,8 @@
               </p><br/>
             <% end %>
           </div>
-  		</div>
-  	</div>
+      </div>
+    </div>
   </div>
 </div>
 
