@@ -2,21 +2,35 @@
 
 <meta name="Description" content="Therapist in <%= @therapist.location.city %>, <%= @therapist.location.state%> - <%= @therapist.description %>">
 
-<div class="therapist-container">
-   <div class="large-10 push-1 columns" style="margin-top:40px">
-
+<div class="container">
+  <div class="therapist-container">
     <div class="th-show-info">
-      <%= image_tag @therapist.picture.url(:medium), class: 'therapist-img-med' %>
-      <h2><%= @therapist.full_name %> <%= @therapist.certifications %>
-      <div class="th-show-phone"><%= @therapist.phone %></div></h2>
-      <div class="th-show-email"><%= mail_to @therapist.email, 'Email' %></div>
-      <div class="th-show-website"><%= link_to 'Website', @therapist.website %></div>
-      <div class="th-show-description"><%= @therapist.description %></div>
-      <div class="th-show-info-bot">
-        <div class="th-show-avgcost">Average Cost: <%= @therapist.cost %></div>
-        <div class="th-show-sliding">Sliding Scale?: <%= @therapist.sliding_scale? %></div>
-        <div class="th-show-consult">Free Consultation?: <%= @therapist.free_consultation? %></div>
-      </div>
+      <div class='row'>
+        <div class="col-xs-10 col-xs-offset-2 col-md-1 col-md-offset-0">
+          <%= image_tag @therapist.picture.url(:medium) %>
+        </div>
+          <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <h2 style="margin-left:20px"><%= @therapist.full_name %> <%= @therapist.certifications %></h2>
+          </div>
+          <div class="col-xs-8 col-md-3 col-md-offset-2 text-right">
+            <h2><%= phone_number_link(@therapist.phone) %></h2>
+          </div>
+          <div class="col-xs-12 col-md-2 col-md-offset-8 text-right">
+            <%= mail_to @therapist.email, 'Email' %> |
+            <%= link_to 'Website', @therapist.website %>
+          </div>
+          <div class="col-xs-12 col-md-6 col-md-offset-1 text-left">
+            <p style="margin-left:20px"><%= @therapist.description %></p>
+          </div>
+          <div class="col-xs-12">
+            <div class="th-show-info-bot">
+              <div class="th-show-avgcost">Average Cost: <%= @therapist.cost %></div>
+              <div class="th-show-sliding">Sliding Scale?: <%= @therapist.sliding_scale? %></div>
+              <div class="th-show-consult">Free Consultation?: <%= @therapist.free_consultation? %>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
