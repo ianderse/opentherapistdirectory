@@ -3,7 +3,7 @@
     <table class="table">
       <tr><td><b>Name</b></td><td><b>Verified</b></td><td><b>Active</b></td><td><b>Email</b></td></tr>
         <tr>
-          <td><%= @therapist.full_name %></td>
+          <td><%= link_to @therapist.full_name, therapist_path(@therapist) %></td>
           <td><%= check_box_tag 'verified', @therapist.id , @therapist.verified, :class => "task-check" %></td>
           <td><%= check_box_tag 'active', @therapist.id , @therapist.active, :class => "task-check" %></td>
           <td><%= mail_to @therapist.email %></td>
